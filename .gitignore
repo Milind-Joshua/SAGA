@@ -44,6 +44,10 @@ test-results/
 # Claude Code local config
 .claude/
 
+# internal planning docs — keep local only
+PLANNING.md
+SPRINT_*.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
