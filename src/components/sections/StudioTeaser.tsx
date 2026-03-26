@@ -15,7 +15,7 @@ export function StudioTeaser() {
       {/* Full-width studio image */}
       <div className="relative aspect-[16/9] min-h-[400px]">
         <Image
-          src="/studio-placeholder.jpg"
+          src="https://picsum.photos/seed/saga-studio/1600/900"
           alt="The SAGA atelier — a bright, north-facing studio with works in progress and shelves of pigments"
           fill
           sizes="100vw"

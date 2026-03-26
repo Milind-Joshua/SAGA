@@ -12,7 +12,7 @@ interface HeroProps {
 
 export function Hero({
   image = {
-    src: '/hero-placeholder.jpg',
+    src: 'https://picsum.photos/seed/saga-hero/1920/1080',
     alt: 'A large-format oil painting of a coastal landscape at dusk — rich ochres and deep blues',
   },
   title = 'Sangeeth',

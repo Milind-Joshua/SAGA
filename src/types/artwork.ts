@@ -1,3 +1,11 @@
+export interface ArtworkImage {
+  src: string
+  alt: string
+  width: number
+  height: number
+  blurDataURL?: string
+}
+
 export interface Artwork {
   id: string
   slug: string
@@ -5,13 +13,11 @@ export interface Artwork {
   year: number
   medium: string
   dimensions: string
-  image: {
-    src: string
-    alt: string
-    width: number
-    height: number
-    blurDataURL?: string
-  }
+  description?: string
+  image: ArtworkImage
   series?: string
-  available?: boolean
+  seriesTitle?: string
+  available: boolean
+  price?: number
+  tags?: string[]
 }

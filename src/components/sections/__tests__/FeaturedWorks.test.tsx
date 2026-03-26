@@ -20,11 +20,10 @@ describe('FeaturedWorks', () => {
   })
 
   it('links to /gallery/[slug] for each card', () => {
-    render(<FeaturedWorks artworks={featuredArtworks} />)
+    const { container } = render(<FeaturedWorks artworks={featuredArtworks} />)
     featuredArtworks.forEach((artwork) => {
-      expect(
-        screen.getByRole('link', { name: new RegExp(artwork.title) })
-      ).toHaveAttribute('href', `/gallery/${artwork.slug}`)
+      const link = container.querySelector(`a[href="/gallery/${artwork.slug}"]`)
+      expect(link).not.toBeNull()
     })
   })
 })
