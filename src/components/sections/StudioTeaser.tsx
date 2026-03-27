@@ -15,8 +15,8 @@ export function StudioTeaser() {
       {/* Full-width studio image */}
       <div className="relative aspect-[16/9] min-h-[400px]">
         <Image
-          src="https://images.metmuseum.org/CRDImages/ep/web-large/DT1042.jpg"
-          alt="Camille Pissarro — The Garden of the Tuileries on a Spring Morning, 1899, oil on canvas"
+          src="https://picsum.photos/seed/saga-studio/1600/900"
+          alt="The SAGA atelier — a bright, north-facing studio with works in progress and shelves of pigments"
           fill
           sizes="100vw"
           className="object-cover object-center"

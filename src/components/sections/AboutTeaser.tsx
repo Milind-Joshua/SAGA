@@ -58,8 +58,8 @@ export function AboutTeaser() {
           className="relative aspect-[4/5] overflow-hidden bg-[var(--color-border)]"
         >
           <Image
-            src="https://images.metmuseum.org/CRDImages/ep/web-large/DP130999.jpg"
-            alt="Vincent van Gogh — Cypresses, 1889, oil on canvas"
+            src="https://picsum.photos/seed/saga-about/800/1000"
+            alt="Sangeeth in her studio, standing before a large canvas"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
