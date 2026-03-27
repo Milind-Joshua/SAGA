@@ -41,7 +41,7 @@ export function AboutTeaser() {
             href="/about"
             className="inline-block border-b border-[var(--color-foreground)] pb-1 text-sm tracking-widest uppercase transition-colors duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
-            Read more
+            About the artist
           </Link>
         </motion.div>
 

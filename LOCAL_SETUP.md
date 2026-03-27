@@ -178,7 +178,14 @@ npx lighthouse http://localhost:3000 \
 | Home    | 93          | 100           | 100            | 91  |
 | Gallery | 96          | 100           | 100            | 100 |
 
-Sprint 5 targets: Performance ≥ 90, SEO ≥ 95 on all pages.
+**Sprint 5 scores (image perf, bundle audit, SEO — desktop):**
+
+| Page    | Performance | Accessibility | Best Practices | SEO | LCP  | CLS   | FCP  | TBT  |
+| ------- | ----------- | ------------- | -------------- | --- | ---- | ----- | ---- | ---- |
+| Home    | 92          | 100           | 100            | 100 | 3.4s | 0     | 0.8s | 30ms |
+| Gallery | 93          | 100           | 100            | 100 | 3.3s | 0.049 | 0.8s | 60ms |
+
+Sprint 6 targets: LCP ≤ 2.5s on all pages (requires real Sanity images on Vercel CDN).
 
 ---
 
