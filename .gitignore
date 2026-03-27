@@ -38,6 +38,10 @@ yarn-error.log*
 playwright-report/
 test-results/
 
+# performance audit outputs
+lighthouse-*.json
+lighthouse-*.html
+
 # vercel
 .vercel
 

@@ -145,9 +145,40 @@ Enable format on save in VS Code settings:
 | -------------------- | ------------------------------------------ |
 | `npm run dev`        | Start local dev server at localhost:3000   |
 | `npm run build`      | Production build (requires valid env vars) |
+| `npm run start`      | Serve the production build locally         |
 | `npm run lint`       | Run ESLint across all files                |
 | `npm run type-check` | Run TypeScript compiler check              |
 | `npm test`           | Run unit tests (Vitest)                    |
+
+### Running a Lighthouse Performance Audit (optional)
+
+Lighthouse is available via `npx` — no install needed. Run it against the production build for accurate scores:
+
+```bash
+# 1. Build and start the production server
+npm run build
+npm run start
+
+# 2. In a second terminal, run the audit (targets localhost:3000)
+npx lighthouse http://localhost:3000 \
+  --only-categories=performance,accessibility,best-practices,seo \
+  --chrome-flags="--headless=new --no-sandbox --disable-gpu" \
+  --output=json \
+  --output-path=./lighthouse-home.json
+
+# 3. Open the JSON or use the --output=html flag for a visual report
+```
+
+> Lighthouse output files (`lighthouse-*.json`, `lighthouse-*.html`) are git-ignored — they are local audit snapshots, not source code.
+
+**Baseline scores (measured Sprint 4, production build, desktop):**
+
+| Page    | Performance | Accessibility | Best Practices | SEO |
+| ------- | ----------- | ------------- | -------------- | --- |
+| Home    | 93          | 100           | 100            | 91  |
+| Gallery | 96          | 100           | 100            | 100 |
+
+Sprint 5 targets: Performance ≥ 90, SEO ≥ 95 on all pages.
 
 ---
 
