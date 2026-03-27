@@ -1,7 +1,7 @@
 import type { Artwork } from '@/types/artwork'
 
-const BLUR =
-  'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABAUG/8QAIBAAAgIBBAMAAAAAAAAAAAAAAQIDBBESISIxQf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCgM1axz7FkMnPd+Sslsm0ikMzHoAP9ZJJJJI//2Q=='
+// All images are public domain paintings sourced from Wikimedia Commons
+const W = 'https://upload.wikimedia.org/wikipedia/commons/thumb'
 
 export const allArtworks: Artwork[] = [
   // ── Coastal series ──────────────────────────────────────────────────────────
@@ -15,11 +15,10 @@ export const allArtworks: Artwork[] = [
     description:
       'Warm ochres dissolve into deep indigo where the sea meets a hazy horizon. Painted on a single overcast morning, this work captures the transient quality of Atlantic light before the tide turns.',
     image: {
-      src: 'https://picsum.photos/seed/coastal-light-i/800/1000',
-      alt: 'Abstract coastal landscape — warm golden light dissolving into a deep blue horizon',
-      width: 800,
-      height: 1000,
-      blurDataURL: BLUR,
+      src: `${W}/6/6a/Gustave_Courbet_-_The_Wave_-_WGA5526.jpg/1024px-Gustave_Courbet_-_The_Wave_-_WGA5526.jpg`,
+      alt: 'Gustave Courbet — The Wave, 1870, oil on canvas',
+      width: 1024,
+      height: 724,
     },
     series: 'coastal',
     seriesTitle: 'Coastal Light',
@@ -36,11 +35,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A companion piece to Coastal Light I, painted the following dawn. The palette shifts toward silvery lilac as morning mist lifts from the water, revealing a flat calm beneath.',
     image: {
-      src: 'https://picsum.photos/seed/coastal-light-ii/800/1000',
-      alt: 'Misty coastal seascape with silvery morning light and a calm flat sea',
-      width: 800,
-      height: 1000,
-      blurDataURL: BLUR,
+      src: `${W}/e/ed/J._M._W._Turner_-_Fishermen_at_Sea_-_Google_Art_Project.jpg/1024px-J._M._W._Turner_-_Fishermen_at_Sea_-_Google_Art_Project.jpg`,
+      alt: 'J.M.W. Turner — Fishermen at Sea, 1796, oil on canvas',
+      width: 1024,
+      height: 766,
     },
     series: 'coastal',
     seriesTitle: 'Coastal Light',
@@ -57,11 +55,10 @@ export const allArtworks: Artwork[] = [
     description:
       'The largest of the Coastal Light series. Broken brushwork and scraping techniques evoke the restless energy of a western shore in autumn — the canvas itself retains the texture of wind.',
     image: {
-      src: 'https://picsum.photos/seed/coastal-light-iii/1200/1000',
-      alt: 'Large-scale expressive coastal painting in ochres and slate blues with visible brushwork',
-      width: 1200,
-      height: 1000,
-      blurDataURL: BLUR,
+      src: `${W}/a/a5/Winslow_Homer_-_Breezing_Up_%28A_Fair_Wind%29_-_Google_Art_Project.jpg/1024px-Winslow_Homer_-_Breezing_Up_%28A_Fair_Wind%29_-_Google_Art_Project.jpg`,
+      alt: 'Winslow Homer — Breezing Up (A Fair Wind), 1876, oil on canvas',
+      width: 1024,
+      height: 731,
     },
     series: 'coastal',
     seriesTitle: 'Coastal Light',
@@ -80,11 +77,10 @@ export const allArtworks: Artwork[] = [
     description:
       'Entering a dense stand of oak in late afternoon, light pools on the forest floor in isolated patches. The painting explores the relationship between darkness and luminosity in enclosed natural spaces.',
     image: {
-      src: 'https://picsum.photos/seed/forest-interior-i/900/1200',
-      alt: 'Forest interior with dappled light on the ground beneath a dense oak canopy',
-      width: 900,
-      height: 1200,
-      blurDataURL: BLUR,
+      src: `${W}/a/af/Ivan_Shishkin_-_Morning_in_a_Pine_Forest_-_Google_Art_Project.jpg/1024px-Ivan_Shishkin_-_Morning_in_a_Pine_Forest_-_Google_Art_Project.jpg`,
+      alt: 'Ivan Shishkin — Morning in a Pine Forest, 1889, oil on canvas',
+      width: 1024,
+      height: 754,
     },
     series: 'forest',
     seriesTitle: 'Forest Interiors',
@@ -101,11 +97,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A winter version of the same woodland — stripped of leaf, the canopy opens and cold blue sky presses through bare branches. The palette is deliberately austere: charcoal, pale ash, a thread of yellow.',
     image: {
-      src: 'https://picsum.photos/seed/forest-interior-ii/900/1200',
-      alt: 'Winter forest with bare branches and cold blue light filtering through the canopy',
-      width: 900,
-      height: 1200,
-      blurDataURL: BLUR,
+      src: `${W}/b/b9/Caspar_David_Friedrich_-_Der_Chasseur_im_Walde.jpg/830px-Caspar_David_Friedrich_-_Der_Chasseur_im_Walde.jpg`,
+      alt: 'Caspar David Friedrich — Der Chasseur im Walde, 1814, oil on canvas',
+      width: 830,
+      height: 1024,
     },
     series: 'forest',
     seriesTitle: 'Forest Interiors',
@@ -122,11 +117,10 @@ export const allArtworks: Artwork[] = [
     description:
       'Dappled light filtering through a dense forest canopy, painted with loose expressive brushwork. The horizontal format emphasises the depth of the woodland rather than its height.',
     image: {
-      src: 'https://picsum.photos/seed/forest-interior-iii/1200/900',
-      alt: 'Horizontal forest painting — expressive brushwork, light piercing a dense summer canopy',
-      width: 1200,
-      height: 900,
-      blurDataURL: BLUR,
+      src: `${W}/3/3c/Ivan_Shishkin_-_The_Rye_-_Google_Art_Project.jpg/1024px-Ivan_Shishkin_-_The_Rye_-_Google_Art_Project.jpg`,
+      alt: 'Ivan Shishkin — The Rye, 1878, oil on canvas',
+      width: 1024,
+      height: 691,
     },
     series: 'forest',
     seriesTitle: 'Forest Interiors',
@@ -145,11 +139,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A simple ceramic vessel on a linen cloth, rendered in translucent watercolour washes. The painting is as much about the shadow the object casts as about the object itself.',
     image: {
-      src: 'https://picsum.photos/seed/still-life-vessel/500/700',
-      alt: 'A simple ceramic vessel on linen cloth, soft watercolour washes, warm neutral tones',
-      width: 500,
-      height: 700,
-      blurDataURL: BLUR,
+      src: `${W}/b/b8/Jean-Baptiste-Sim%C3%A9on_Chardin_-_The_Silver_Goblet_-_WGA4757.jpg/750px-Jean-Baptiste-Sim%C3%A9on_Chardin_-_The_Silver_Goblet_-_WGA4757.jpg`,
+      alt: 'Jean-Baptiste-Siméon Chardin — The Silver Goblet, c.1728, oil on canvas',
+      width: 750,
+      height: 895,
     },
     series: 'still-life',
     seriesTitle: 'Domestic Studies',
@@ -166,11 +159,10 @@ export const allArtworks: Artwork[] = [
     description:
       'Three pears arranged on a stone windowsill. The work is part of a domestic study practice — returning to ordinary objects with fresh eyes, seeking the monumental within the quotidian.',
     image: {
-      src: 'https://picsum.photos/seed/still-life-pears/500/700',
-      alt: 'Three pears on a stone windowsill in soft natural light, watercolour',
-      width: 500,
-      height: 700,
-      blurDataURL: BLUR,
+      src: `${W}/2/2e/Paul_C%C3%A9zanne_-_Apples_and_Oranges_-_Google_Art_Project.jpg/1024px-Paul_C%C3%A9zanne_-_Apples_and_Oranges_-_Google_Art_Project.jpg`,
+      alt: 'Paul Cézanne — Apples and Oranges, c.1899, oil on canvas',
+      width: 1024,
+      height: 818,
     },
     series: 'still-life',
     seriesTitle: 'Domestic Studies',
@@ -187,11 +179,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A folded linen cloth occupies almost the entire picture plane. The challenge here is purely tonal — the white of the cloth against the off-white of the paper, differentiated only by shadow and crease.',
     image: {
-      src: 'https://picsum.photos/seed/still-life-cloth/400/600',
-      alt: 'A folded white linen cloth — study in tonal values, watercolour on paper',
-      width: 400,
-      height: 600,
-      blurDataURL: BLUR,
+      src: `${W}/5/5c/Jean_Baptiste_Simeon_Chardin_-_The_Brioche_-_Google_Art_Project.jpg/1024px-Jean_Baptiste_Simeon_Chardin_-_The_Brioche_-_Google_Art_Project.jpg`,
+      alt: 'Jean-Baptiste-Siméon Chardin — The Brioche, 1763, oil on canvas',
+      width: 1024,
+      height: 861,
     },
     series: 'still-life',
     seriesTitle: 'Domestic Studies',
@@ -210,11 +201,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A small-format study painted in a single sitting at first light. The brevity of the painting session is legible in the work — marks are decisive, nothing is overworked.',
     image: {
-      src: 'https://picsum.photos/seed/morning-light/400/300',
-      alt: 'Small oil study in warm morning light — decisive marks, loose painterly quality',
-      width: 400,
-      height: 300,
-      blurDataURL: BLUR,
+      src: `${W}/7/7e/Camille_Corot_-_Souvenir_of_Mortefontaine.jpg/1024px-Camille_Corot_-_Souvenir_of_Mortefontaine.jpg`,
+      alt: 'Camille Corot — Souvenir of Mortefontaine, 1864, oil on canvas',
+      width: 1024,
+      height: 737,
     },
     available: true,
     tags: ['oil', 'landscape', 'study'],
@@ -229,11 +219,10 @@ export const allArtworks: Artwork[] = [
     description:
       'The counterpart to Morning Light — painted at dusk, when colour temperature shifts dramatically and familiar forms become ambiguous. A companion piece intended to hang alongside its pair.',
     image: {
-      src: 'https://picsum.photos/seed/dusk-study/400/300',
-      alt: 'Small oil study at dusk — warm to cool colour transition, landscape forms dissolving in low light',
-      width: 400,
-      height: 300,
-      blurDataURL: BLUR,
+      src: `${W}/9/9b/Frederic_Edwin_Church_-_Twilight_in_the_Wilderness.jpg/1024px-Frederic_Edwin_Church_-_Twilight_in_the_Wilderness.jpg`,
+      alt: 'Frederic Edwin Church — Twilight in the Wilderness, 1860, oil on canvas',
+      width: 1024,
+      height: 609,
     },
     available: false,
     tags: ['oil', 'landscape', 'study'],
@@ -248,11 +237,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A path through deciduous woodland in October. The painting is structured around the recession of the path itself — a formal device that draws the eye into the picture while the peripheral foliage burns with seasonal colour.',
     image: {
-      src: 'https://picsum.photos/seed/autumn-path/600/800',
-      alt: 'A woodland path in autumn — warm russet foliage, receding path, oil on canvas',
-      width: 600,
-      height: 800,
-      blurDataURL: BLUR,
+      src: `${W}/e/ec/John_Everett_Millais_-_Autumn_Leaves.jpg/849px-John_Everett_Millais_-_Autumn_Leaves.jpg`,
+      alt: 'John Everett Millais — Autumn Leaves, 1856, oil on canvas',
+      width: 849,
+      height: 1024,
     },
     available: true,
     tags: ['oil', 'landscape', 'forest'],
