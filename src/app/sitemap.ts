@@ -6,8 +6,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [artworkSlugs, seriesSlugs] = await Promise.all([
-    client.fetch<string[]>(allArtworkSlugsQuery),
-    client.fetch<string[]>(allSeriesSlugsQuery),
+    client.fetch<string[]>(allArtworkSlugsQuery).catch(() => [] as string[]),
+    client.fetch<string[]>(allSeriesSlugsQuery).catch(() => [] as string[]),
   ])
 
   const staticRoutes: MetadataRoute.Sitemap = [

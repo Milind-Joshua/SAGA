@@ -16,12 +16,10 @@ export const projectId = assertValue(
 
 function assertValue(v: string | undefined, errorMessage: string): string {
   if (v === undefined) {
-    if (typeof window === 'undefined') {
-      // Build-time: warn rather than throw so static analysis/CI doesn't crash
-      console.warn(errorMessage)
-      return ''
-    }
-    throw new Error(errorMessage)
+    // Build-time (CI without env vars): warn and return a placeholder so
+    // createClient can be instantiated — actual fetches will fail at runtime.
+    console.warn(errorMessage)
+    return 'placeholder'
   }
   return v
 }
