@@ -2,6 +2,10 @@ import type { MetadataRoute } from 'next'
 import { client } from '@/lib/sanity/client'
 import { allArtworkSlugsQuery, allSeriesSlugsQuery } from '@/lib/sanity/queries'
 
+// Never statically rendered — generated fresh at request time so Sanity
+// credentials don't need to be present during the build step.
+export const dynamic = 'force-dynamic'
+
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
