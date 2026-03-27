@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
-import { client } from '@/lib/sanity/client'
-import { allArtworksQuery, allSeriesQuery } from '@/lib/sanity/queries'
-import { mapArtwork, mapSeries } from '@/lib/sanity/mappers'
-import type { SanityArtwork, SanitySeries } from '@/lib/sanity/types'
+import { allArtworks } from '@/data/artworks'
+import { allSeries } from '@/data/series'
 import { GalleryClient } from './GalleryClient'
 import type { FilterState } from '@/components/gallery/GalleryFilters'
-
-export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Gallery — Sangeeth',
@@ -23,14 +19,7 @@ interface GalleryPageProps {
 }
 
 export default async function GalleryPage({ searchParams }: GalleryPageProps) {
-  const [sanityArtworks, sanitySeries, params] = await Promise.all([
-    client.fetch<SanityArtwork[]>(allArtworksQuery),
-    client.fetch<SanitySeries[]>(allSeriesQuery),
-    searchParams,
-  ])
-
-  const artworks = sanityArtworks.map(mapArtwork)
-  const series = sanitySeries.map(mapSeries)
+  const params = await searchParams
 
   const activeFilters: FilterState = {
     medium: params.medium ?? '',
@@ -48,8 +37,8 @@ export default async function GalleryPage({ searchParams }: GalleryPageProps) {
       </header>
 
       <GalleryClient
-        artworks={artworks}
-        series={series}
+        artworks={allArtworks}
+        series={allSeries}
         activeFilters={activeFilters}
       />
     </main>

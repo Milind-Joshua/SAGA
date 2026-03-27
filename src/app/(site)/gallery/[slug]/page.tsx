@@ -1,56 +1,35 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { client } from '@/lib/sanity/client'
-import {
-  artworkBySlugQuery,
-  allArtworksQuery,
-  allArtworkSlugsQuery,
-} from '@/lib/sanity/queries'
-import { mapArtwork } from '@/lib/sanity/mappers'
-import type { SanityArtwork } from '@/lib/sanity/types'
+import { allArtworks } from '@/data/artworks'
 import { ArtworkDetail } from '@/components/gallery/ArtworkDetail'
-
-export const revalidate = 3600
 
 interface ArtworkPageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  const slugs = await client.fetch<string[]>(allArtworkSlugsQuery)
-  return slugs.map((slug) => ({ slug }))
+  return allArtworks.map((artwork) => ({ slug: artwork.slug }))
 }
 
 export async function generateMetadata({
   params,
 }: ArtworkPageProps): Promise<Metadata> {
   const { slug } = await params
-  const doc = await client.fetch<SanityArtwork | null>(artworkBySlugQuery, {
-    slug,
-  })
-  if (!doc) return {}
+  const artwork = allArtworks.find((a) => a.slug === slug)
+  if (!artwork) return {}
   return {
-    title: `${doc.title} — Sangeeth`,
+    title: `${artwork.title} — Sangeeth`,
     description:
-      doc.description ??
-      `${doc.title}, ${doc.medium}${doc.dimensions ? ', ' + doc.dimensions : ''}, ${doc.year}.`,
+      artwork.description ??
+      `${artwork.title}, ${artwork.medium}, ${artwork.dimensions}, ${artwork.year}.`,
   }
 }
 
 export default async function ArtworkPage({ params }: ArtworkPageProps) {
   const { slug } = await params
+  const artwork = allArtworks.find((a) => a.slug === slug)
+  if (!artwork) notFound()
 
-  const [doc, allDocs] = await Promise.all([
-    client.fetch<SanityArtwork | null>(artworkBySlugQuery, { slug }),
-    client.fetch<SanityArtwork[]>(allArtworksQuery),
-  ])
-
-  if (!doc) notFound()
-
-  const artwork = mapArtwork(doc)
-  const allArtworks = allDocs.map(mapArtwork)
-
-  // Related: same series (excl. self), or same tags, capped at 3
   const related = allArtworks
     .filter((a) => {
       if (a.id === artwork.id) return false
@@ -61,7 +40,6 @@ export default async function ArtworkPage({ params }: ArtworkPageProps) {
     })
     .slice(0, 3)
 
-  // All artworks in the same series (for lightbox navigation)
   const seriesArtworks = artwork.series
     ? allArtworks.filter((a) => a.series === artwork.series)
     : [artwork]
