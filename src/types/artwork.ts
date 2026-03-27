@@ -1,5 +1,7 @@
 export interface ArtworkImage {
   src: string
+  thumbnailSrc: string
+  lightboxSrc: string
   alt: string
   width: number
   height: number

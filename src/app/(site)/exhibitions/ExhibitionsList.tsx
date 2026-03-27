@@ -52,7 +52,7 @@ function ExhibitionRow({
         delay: reducedMotion ? 0 : delay,
         ease: 'easeOut' as const,
       }}
-      className="grid grid-cols-1 gap-2 border-b border-[var(--color-border)] py-8 sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8"
+      className="grid grid-cols-1 gap-3 border-b border-[var(--color-border)] py-8 sm:grid-cols-[auto_1fr_auto] sm:items-start sm:gap-8"
     >
       <span className="w-20 shrink-0 text-sm text-[var(--color-accent)]">
         {year}

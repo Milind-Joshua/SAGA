@@ -4,7 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 
-export function StudioTeaser() {
+interface StudioTeaserProps {
+  imageUrl?: string | null
+}
+
+export function StudioTeaser({ imageUrl }: StudioTeaserProps) {
   const reducedMotion = useReducedMotion()
 
   return (
@@ -14,18 +18,21 @@ export function StudioTeaser() {
     >
       {/* Full-width studio image */}
       <div className="relative aspect-[16/9] min-h-[400px]">
-        <Image
-          src="https://picsum.photos/seed/saga-studio/1600/900"
-          alt="The SAGA atelier — a bright, north-facing studio with works in progress and shelves of pigments"
-          fill
-          sizes="100vw"
-          placeholder="empty"
-          className="object-cover object-center"
-        />
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt="The SAGA atelier — a bright, north-facing studio with works in progress and shelves of pigments"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-neutral-900" />
+        )}
         <div aria-hidden="true" className="absolute inset-0 bg-black/50" />
 
         {/* Overlay content */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center px-6">
           <motion.div
             initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,7 +41,7 @@ export function StudioTeaser() {
               duration: reducedMotion ? 0 : 0.6,
               ease: 'easeOut',
             }}
-            className="mx-auto max-w-2xl px-6 text-center text-white"
+            className="w-full max-w-2xl text-center text-white"
           >
             <h2
               id="studio-teaser-title"
@@ -49,7 +56,7 @@ export function StudioTeaser() {
             </p>
             <Link
               href="/about#atelier"
-              className="inline-block border border-white px-8 py-3 text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-white"
+              className="block w-full border border-white px-8 py-3 text-center text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-white sm:inline-block sm:w-auto"
             >
               Visit the Studio
             </Link>

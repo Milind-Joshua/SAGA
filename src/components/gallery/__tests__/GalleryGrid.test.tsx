@@ -29,6 +29,8 @@ const makeArtwork = (id: string): Artwork => ({
   dimensions: '80 × 100 cm',
   image: {
     src: `https://picsum.photos/seed/artwork-${id}/800/1000`,
+    thumbnailSrc: `https://picsum.photos/seed/artwork-${id}/800/1000`,
+    lightboxSrc: `https://picsum.photos/seed/artwork-${id}/800/1000`,
     alt: `Artwork ${id} image`,
     width: 800,
     height: 1000,

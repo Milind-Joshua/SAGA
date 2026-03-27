@@ -13,10 +13,20 @@ export function mapArtwork(doc: SanityArtwork): Artwork {
     dimensions: doc.dimensions ?? '',
     description: doc.description,
     image: {
-      src: urlFor(doc.image).width(1200).quality(85).url(),
+      src: urlFor(doc.image).width(2400).format('webp').quality(92).url(),
+      thumbnailSrc: urlFor(doc.image)
+        .width(1080)
+        .format('webp')
+        .quality(94)
+        .url(),
+      lightboxSrc: urlFor(doc.image)
+        .width(3840)
+        .format('webp')
+        .quality(95)
+        .url(),
       alt: doc.image.alt ?? doc.title,
-      width: 1200,
-      height: 1200,
+      width: 2400,
+      height: 2400,
       blurDataURL: urlFor(doc.image).width(20).blur(50).quality(30).url(),
     },
     series: doc.series?.slug.current,
@@ -28,17 +38,38 @@ export function mapArtwork(doc: SanityArtwork): Artwork {
 }
 
 export function mapSeries(doc: SanitySeries): Series {
+  const coverImage = doc.coverImage?.asset
+    ? {
+        src: urlFor(doc.coverImage)
+          .width(1600)
+          .format('webp')
+          .quality(85)
+          .url(),
+        thumbnailSrc: urlFor(doc.coverImage)
+          .width(1080)
+          .format('webp')
+          .quality(94)
+          .url(),
+        lightboxSrc: urlFor(doc.coverImage)
+          .width(1600)
+          .format('webp')
+          .quality(85)
+          .url(),
+        alt: doc.coverImage.alt ?? doc.title,
+        width: 1600,
+        height: 1200,
+        blurDataURL: urlFor(doc.coverImage)
+          .width(20)
+          .blur(50)
+          .quality(30)
+          .url(),
+      }
+    : null
   return {
     slug: doc.slug.current,
     title: doc.title,
     description: doc.description,
-    coverImage: {
-      src: urlFor(doc.coverImage).width(800).quality(80).url(),
-      alt: doc.coverImage.alt ?? doc.title,
-      width: 800,
-      height: 600,
-      blurDataURL: urlFor(doc.coverImage).width(20).blur(50).quality(30).url(),
-    },
+    coverImage,
     year: doc.year ?? '',
   }
 }

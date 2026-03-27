@@ -16,6 +16,8 @@ export const allArtworks: Artwork[] = [
       'Warm ochres dissolve into deep indigo where the sea meets a hazy horizon. Painted on a single overcast morning, this work captures the transient quality of Atlantic light before the tide turns.',
     image: {
       src: 'https://picsum.photos/seed/coastal-light-i/800/1000',
+      thumbnailSrc: 'https://picsum.photos/seed/coastal-light-i/800/1000',
+      lightboxSrc: 'https://picsum.photos/seed/coastal-light-i/800/1000',
       alt: 'Abstract coastal landscape — warm golden light dissolving into a deep blue horizon',
       width: 800,
       height: 1000,
@@ -37,6 +39,8 @@ export const allArtworks: Artwork[] = [
       'A companion piece to Coastal Light I, painted the following dawn. The palette shifts toward silvery lilac as morning mist lifts from the water, revealing a flat calm beneath.',
     image: {
       src: 'https://picsum.photos/seed/coastal-light-ii/800/1000',
+      thumbnailSrc: 'https://picsum.photos/seed/coastal-light-ii/800/1000',
+      lightboxSrc: 'https://picsum.photos/seed/coastal-light-ii/800/1000',
       alt: 'Misty coastal seascape with silvery morning light and a calm flat sea',
       width: 800,
       height: 1000,
@@ -58,6 +62,8 @@ export const allArtworks: Artwork[] = [
       'The largest of the Coastal Light series. Broken brushwork and scraping techniques evoke the restless energy of a western shore in autumn — the canvas itself retains the texture of wind.',
     image: {
       src: 'https://picsum.photos/seed/coastal-light-iii/1200/1000',
+      thumbnailSrc: 'https://picsum.photos/seed/coastal-light-iii/1200/1000',
+      lightboxSrc: 'https://picsum.photos/seed/coastal-light-iii/1200/1000',
       alt: 'Large-scale expressive coastal painting in ochres and slate blues with visible brushwork',
       width: 1200,
       height: 1000,
@@ -81,6 +87,8 @@ export const allArtworks: Artwork[] = [
       'Entering a dense stand of oak in late afternoon, light pools on the forest floor in isolated patches. The painting explores the relationship between darkness and luminosity in enclosed natural spaces.',
     image: {
       src: 'https://picsum.photos/seed/forest-interior-i/900/1200',
+      thumbnailSrc: 'https://picsum.photos/seed/forest-interior-i/900/1200',
+      lightboxSrc: 'https://picsum.photos/seed/forest-interior-i/900/1200',
       alt: 'Forest interior with dappled light on the ground beneath a dense oak canopy',
       width: 900,
       height: 1200,
@@ -102,6 +110,8 @@ export const allArtworks: Artwork[] = [
       'A winter version of the same woodland — stripped of leaf, the canopy opens and cold blue sky presses through bare branches. The palette is deliberately austere: charcoal, pale ash, a thread of yellow.',
     image: {
       src: 'https://picsum.photos/seed/forest-interior-ii/900/1200',
+      thumbnailSrc: 'https://picsum.photos/seed/forest-interior-ii/900/1200',
+      lightboxSrc: 'https://picsum.photos/seed/forest-interior-ii/900/1200',
       alt: 'Winter forest with bare branches and cold blue light filtering through the canopy',
       width: 900,
       height: 1200,
@@ -123,6 +133,8 @@ export const allArtworks: Artwork[] = [
       'Dappled light filtering through a dense forest canopy, painted with loose expressive brushwork. The horizontal format emphasises the depth of the woodland rather than its height.',
     image: {
       src: 'https://picsum.photos/seed/forest-interior-iii/1200/900',
+      thumbnailSrc: 'https://picsum.photos/seed/forest-interior-iii/1200/900',
+      lightboxSrc: 'https://picsum.photos/seed/forest-interior-iii/1200/900',
       alt: 'Horizontal forest painting — expressive brushwork, light piercing a dense summer canopy',
       width: 1200,
       height: 900,
@@ -146,6 +158,8 @@ export const allArtworks: Artwork[] = [
       'A simple ceramic vessel on a linen cloth, rendered in translucent watercolour washes. The painting is as much about the shadow the object casts as about the object itself.',
     image: {
       src: 'https://picsum.photos/seed/still-life-vessel/500/700',
+      thumbnailSrc: 'https://picsum.photos/seed/still-life-vessel/500/700',
+      lightboxSrc: 'https://picsum.photos/seed/still-life-vessel/500/700',
       alt: 'A simple ceramic vessel on linen cloth, soft watercolour washes, warm neutral tones',
       width: 500,
       height: 700,
@@ -167,6 +181,8 @@ export const allArtworks: Artwork[] = [
       'Three pears arranged on a stone windowsill. The work is part of a domestic study practice — returning to ordinary objects with fresh eyes, seeking the monumental within the quotidian.',
     image: {
       src: 'https://picsum.photos/seed/still-life-pears/500/700',
+      thumbnailSrc: 'https://picsum.photos/seed/still-life-pears/500/700',
+      lightboxSrc: 'https://picsum.photos/seed/still-life-pears/500/700',
       alt: 'Three pears on a stone windowsill in soft natural light, watercolour',
       width: 500,
       height: 700,
@@ -188,6 +204,8 @@ export const allArtworks: Artwork[] = [
       'A folded linen cloth occupies almost the entire picture plane. The challenge here is purely tonal — the white of the cloth against the off-white of the paper, differentiated only by shadow and crease.',
     image: {
       src: 'https://picsum.photos/seed/still-life-cloth/400/600',
+      thumbnailSrc: 'https://picsum.photos/seed/still-life-cloth/400/600',
+      lightboxSrc: 'https://picsum.photos/seed/still-life-cloth/400/600',
       alt: 'A folded white linen cloth — study in tonal values, watercolour on paper',
       width: 400,
       height: 600,
@@ -211,6 +229,8 @@ export const allArtworks: Artwork[] = [
       'A small-format study painted in a single sitting at first light. The brevity of the painting session is legible in the work — marks are decisive, nothing is overworked.',
     image: {
       src: 'https://picsum.photos/seed/morning-light/400/300',
+      thumbnailSrc: 'https://picsum.photos/seed/morning-light/400/300',
+      lightboxSrc: 'https://picsum.photos/seed/morning-light/400/300',
       alt: 'Small oil study in warm morning light — decisive marks, loose painterly quality',
       width: 400,
       height: 300,
@@ -230,6 +250,8 @@ export const allArtworks: Artwork[] = [
       'The counterpart to Morning Light — painted at dusk, when colour temperature shifts dramatically and familiar forms become ambiguous. A companion piece intended to hang alongside its pair.',
     image: {
       src: 'https://picsum.photos/seed/dusk-study/400/300',
+      thumbnailSrc: 'https://picsum.photos/seed/dusk-study/400/300',
+      lightboxSrc: 'https://picsum.photos/seed/dusk-study/400/300',
       alt: 'Small oil study at dusk — warm to cool colour transition, landscape forms dissolving in low light',
       width: 400,
       height: 300,
@@ -249,6 +271,8 @@ export const allArtworks: Artwork[] = [
       'A path through deciduous woodland in October. The painting is structured around the recession of the path itself — a formal device that draws the eye into the picture while the peripheral foliage burns with seasonal colour.',
     image: {
       src: 'https://picsum.photos/seed/autumn-path/600/800',
+      thumbnailSrc: 'https://picsum.photos/seed/autumn-path/600/800',
+      lightboxSrc: 'https://picsum.photos/seed/autumn-path/600/800',
       alt: 'A woodland path in autumn — warm russet foliage, receding path, oil on canvas',
       width: 600,
       height: 800,

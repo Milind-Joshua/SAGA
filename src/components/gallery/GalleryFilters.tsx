@@ -50,9 +50,12 @@ export function GalleryFilters({
   const hasActiveFilters =
     activeFilters.medium || activeFilters.series || activeFilters.availability
 
+  const selectClass =
+    'w-full border border-[var(--color-border)] bg-transparent px-4 py-2.5 text-sm text-[var(--color-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] sm:w-auto'
+
   return (
     <div
-      className="mb-10 flex flex-wrap items-center gap-3"
+      className="mb-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
       role="group"
       aria-label="Filter artworks"
       data-testid="gallery-filters"
@@ -62,7 +65,7 @@ export function GalleryFilters({
         value={activeFilters.medium}
         onChange={(e) => updateFilter('medium', e.target.value)}
         aria-label="Filter by medium"
-        className="border border-[var(--color-border)] bg-transparent px-4 py-2 text-sm text-[var(--color-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+        className={selectClass}
       >
         <option value="">All Mediums</option>
         {MEDIUMS.map((m) => (
@@ -77,7 +80,7 @@ export function GalleryFilters({
         value={activeFilters.series}
         onChange={(e) => updateFilter('series', e.target.value)}
         aria-label="Filter by series"
-        className="border border-[var(--color-border)] bg-transparent px-4 py-2 text-sm text-[var(--color-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+        className={selectClass}
       >
         <option value="">All Series</option>
         {seriesOptions.map((s) => (
@@ -93,7 +96,7 @@ export function GalleryFilters({
         value={activeFilters.availability}
         onChange={(e) => updateFilter('availability', e.target.value)}
         aria-label="Filter by availability"
-        className="border border-[var(--color-border)] bg-transparent px-4 py-2 text-sm text-[var(--color-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+        className={selectClass}
       >
         <option value="">All Works</option>
         {AVAILABILITIES.map((a) => (
@@ -107,7 +110,7 @@ export function GalleryFilters({
       {hasActiveFilters && (
         <button
           onClick={clearFilters}
-          className="text-sm text-[var(--color-muted)] underline underline-offset-2 transition-colors hover:text-[var(--color-foreground)]"
+          className="self-start text-sm text-[var(--color-muted)] underline underline-offset-2 transition-colors hover:text-[var(--color-foreground)] sm:self-auto"
           data-testid="clear-filters"
         >
           Clear filters

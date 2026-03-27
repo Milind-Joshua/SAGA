@@ -4,7 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 
-export function AboutTeaser() {
+interface AboutTeaserProps {
+  portraitUrl?: string | null
+}
+
+export function AboutTeaser({ portraitUrl }: AboutTeaserProps) {
   const reducedMotion = useReducedMotion()
 
   return (
@@ -57,14 +61,17 @@ export function AboutTeaser() {
           }}
           className="relative aspect-[4/5] overflow-hidden bg-[var(--color-border)]"
         >
-          <Image
-            src="https://picsum.photos/seed/saga-about/800/1000"
-            alt="Sangeeth in her studio, standing before a large canvas"
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            placeholder="empty"
-            className="object-cover"
-          />
+          {portraitUrl ? (
+            <Image
+              src={portraitUrl}
+              alt="Sangeeth in her studio, standing before a large canvas"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-[var(--color-border)]" />
+          )}
         </motion.div>
       </div>
     </section>

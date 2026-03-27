@@ -9,14 +9,16 @@ interface SeriesHeroProps {
 export function SeriesHero({ series, artworkCount }: SeriesHeroProps) {
   return (
     <div className="relative aspect-[16/7] min-h-[320px] overflow-hidden bg-[var(--color-border)]">
-      <Image
-        src={series.coverImage.src}
-        alt={series.coverImage.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      {series.coverImage && (
+        <Image
+          src={series.coverImage.src}
+          alt={series.coverImage.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      )}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"

@@ -33,6 +33,8 @@ const artwork: Artwork = {
   description: 'A beautiful coastal painting.',
   image: {
     src: 'https://picsum.photos/seed/test/800/1000',
+    thumbnailSrc: 'https://picsum.photos/seed/test/800/1000',
+    lightboxSrc: 'https://picsum.photos/seed/test/800/1000',
     alt: 'Coastal landscape',
     width: 800,
     height: 1000,

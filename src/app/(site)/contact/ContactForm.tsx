@@ -36,7 +36,7 @@ export function ContactForm() {
   return (
     <form action={action} noValidate>
       <div className="space-y-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div>
             <label htmlFor="name" className={labelClass}>
               Name
@@ -46,6 +46,7 @@ export function ContactForm() {
               name="name"
               type="text"
               required
+              maxLength={100}
               autoComplete="name"
               className={inputClass}
               placeholder="Your name"
@@ -60,6 +61,7 @@ export function ContactForm() {
               name="email"
               type="email"
               required
+              maxLength={254}
               autoComplete="email"
               className={inputClass}
               placeholder="your@email.com"
@@ -98,6 +100,7 @@ export function ContactForm() {
             name="message"
             required
             rows={5}
+            maxLength={2000}
             className={`${inputClass} resize-none`}
             placeholder="Your message…"
           />
@@ -122,7 +125,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={pending}
-          className="inline-block border border-[var(--color-foreground)] px-8 py-3 text-sm tracking-widest uppercase transition-all duration-300 hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] disabled:opacity-50"
+          className="block w-full border border-[var(--color-foreground)] px-8 py-3 text-center text-sm tracking-widest uppercase transition-all duration-300 hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] disabled:opacity-50 sm:inline-block sm:w-auto"
         >
           {pending ? 'Sending…' : 'Send Message'}
         </button>

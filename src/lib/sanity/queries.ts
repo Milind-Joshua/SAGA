@@ -18,15 +18,15 @@ export const artworkBySlugQuery = groq`*[_type == "artwork" && slug.current == $
 
 /** All series with artwork counts */
 export const allSeriesQuery = groq`*[_type == "series"] | order(title asc) {
-  _id, slug, title, description, coverImage, year,
+  _id, slug, title, description, coverImage { ..., asset-> }, year,
   "artworkCount": count(*[_type == "artwork" && references(^._id)])
 }`
 
 /** Single series with its artworks */
 export const seriesBySlugQuery = groq`*[_type == "series" && slug.current == $slug][0] {
-  _id, slug, title, description, coverImage, year,
+  _id, slug, title, description, coverImage { ..., asset-> }, year,
   "artworks": *[_type == "artwork" && references(^._id)] | order(year desc) {
-    _id, slug, title, year, medium, image, available
+    _id, slug, title, year, medium, image { ..., asset-> }, available
   }
 }`
 
@@ -47,11 +47,20 @@ export const aboutQuery = groq`*[_type == "about"][0] {
 
 // ── Home Page ────────────────────────────────────────────────────────────────
 
-/** Featured artworks from site settings for the home page */
+/** Featured artworks and hero image from site settings for the home page */
 export const homeFeaturedQuery = groq`*[_type == "siteSettings"][0] {
+  heroImage { ..., asset-> },
   "featuredArtworks": featuredArtworks[]->{
     _id, slug, title, year, medium, image, available
   }
+}`
+
+// ── Home About Teasers ────────────────────────────────────────────────────────
+
+/** Portrait and studio images for home page AboutTeaser / StudioTeaser */
+export const homeAboutQuery = groq`*[_type == "about"][0] {
+  portrait { ..., asset-> },
+  "studioImages": studioImages[0..1] { ..., asset-> }
 }`
 
 // ── Slugs (for generateStaticParams) ─────────────────────────────────────────

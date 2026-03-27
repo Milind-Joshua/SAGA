@@ -27,6 +27,8 @@ const artwork: Artwork = {
   description: 'A test description.',
   image: {
     src: 'https://picsum.photos/seed/test/800/1000',
+    thumbnailSrc: 'https://picsum.photos/seed/test/800/1000',
+    lightboxSrc: 'https://picsum.photos/seed/test/800/1000',
     alt: 'Test artwork image',
     width: 800,
     height: 1000,

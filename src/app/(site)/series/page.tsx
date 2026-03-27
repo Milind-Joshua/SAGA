@@ -45,15 +45,17 @@ export default async function SeriesIndexPage() {
               data-testid="series-card"
             >
               <div className="relative mb-4 aspect-[4/3] overflow-hidden bg-[var(--color-border)]">
-                <Image
-                  src={s.coverImage.src}
-                  alt={s.coverImage.alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                  placeholder={s.coverImage.blurDataURL ? 'blur' : 'empty'}
-                  blurDataURL={s.coverImage.blurDataURL}
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
-                />
+                {s.coverImage && (
+                  <Image
+                    src={s.coverImage.thumbnailSrc}
+                    alt={s.coverImage.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    placeholder={s.coverImage.blurDataURL ? 'blur' : 'empty'}
+                    blurDataURL={s.coverImage.blurDataURL}
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
+                  />
+                )}
                 <div className="absolute top-3 right-3 bg-black/50 px-2 py-1 text-xs text-white/80">
                   {count} {count === 1 ? 'work' : 'works'}
                 </div>

@@ -18,6 +18,10 @@ export async function submitContactForm(
     return { status: 'error', message: 'All fields are required.' }
   }
 
+  if (name.length > 100 || email.length > 254 || message.length > 2000) {
+    return { status: 'error', message: 'Input exceeds maximum allowed length.' }
+  }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRegex.test(email)) {
     return { status: 'error', message: 'Please enter a valid email address.' }
@@ -27,7 +31,9 @@ export async function submitContactForm(
   // const resend = new Resend(process.env.RESEND_API_KEY)
   // await resend.emails.send({ from: ..., to: ..., subject: ..., react: ... })
 
-  console.log('[Contact form submission]', { name, email, type, message })
+  if (process.env.NODE_ENV === 'development') {
+    console.log('[Contact form submission]', { name, email, type, message })
+  }
 
   return {
     status: 'success',

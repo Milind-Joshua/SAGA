@@ -22,7 +22,6 @@ const structure: StructureResolver = (S) =>
 export default defineConfig({
   name: 'saga',
   title: 'SAGA',
-  basePath: '/SagaStudio',
   projectId,
   dataset,
   schema: { types: schemaTypes },

@@ -25,7 +25,7 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
       >
         <div className="relative mb-4 aspect-[3/4] overflow-hidden bg-[var(--color-border)]">
           <Image
-            src={artwork.image.src}
+            src={artwork.image.thumbnailSrc}
             alt={artwork.image.alt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
@@ -43,9 +43,9 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
           >
             {artwork.available ? 'Available' : 'Sold'}
           </div>
-          {/* Hover overlay */}
-          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:opacity-100">
-            <div className="translate-y-2 transition-transform duration-300 will-change-transform group-hover:translate-y-0 motion-reduce:translate-y-0">
+          {/* Hover overlay — always visible on touch devices */}
+          <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:opacity-100 [@media(hover:none)]:opacity-100">
+            <div className="translate-y-2 transition-transform duration-300 will-change-transform group-hover:translate-y-0 motion-reduce:translate-y-0 [@media(hover:none)]:translate-y-0">
               <p className="text-sm text-white/80">{artwork.medium}</p>
             </div>
           </div>

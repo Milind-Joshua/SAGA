@@ -21,9 +21,22 @@ describe('Hero', () => {
     expect(cta).toHaveAttribute('href', '/gallery')
   })
 
-  it('hero image has non-empty alt text', () => {
-    render(<Hero />)
+  it('hero image has non-empty alt text when image is provided', () => {
+    render(
+      <Hero
+        image={{
+          src: 'https://cdn.sanity.io/images/test/production/test.webp',
+          alt: 'A coastal painting at dusk',
+        }}
+      />
+    )
     const img = screen.getByRole('img')
     expect(img.getAttribute('alt')?.trim().length).toBeGreaterThan(0)
+  })
+
+  it('renders a gradient background when no image is provided', () => {
+    const { container } = render(<Hero />)
+    const gradient = container.querySelector('.bg-gradient-to-br')
+    expect(gradient).toBeInTheDocument()
   })
 })

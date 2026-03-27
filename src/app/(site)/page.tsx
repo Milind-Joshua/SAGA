@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import dynamic from 'next/dynamic'
 import { client } from '@/lib/sanity/client'
-import { homeFeaturedQuery } from '@/lib/sanity/queries'
+import { homeFeaturedQuery, homeAboutQuery } from '@/lib/sanity/queries'
 import { mapArtwork } from '@/lib/sanity/mappers'
-import type { SanityHomeFeatured } from '@/lib/sanity/types'
+import { urlFor } from '@/lib/sanity/image'
+import type { SanityHomeFeatured, SanityAbout } from '@/lib/sanity/types'
 import { Hero } from '@/components/sections/Hero'
 import { FeaturedWorks } from '@/components/sections/FeaturedWorks'
 
@@ -31,16 +32,48 @@ export const metadata: Metadata = {
 }
 
 export default async function HomePage() {
-  const data = await client.fetch<SanityHomeFeatured>(homeFeaturedQuery)
-  const featuredArtworks = (data?.featuredArtworks ?? []).map(mapArtwork)
+  const [featuredData, aboutData] = await Promise.all([
+    client.fetch<SanityHomeFeatured>(homeFeaturedQuery),
+    client.fetch<SanityAbout>(homeAboutQuery),
+  ])
+
+  const featuredArtworks = (featuredData?.featuredArtworks ?? []).map(
+    mapArtwork
+  )
+
+  // Use dedicated hero image from siteSettings
+  const heroImage = featuredData?.heroImage?.asset
+    ? {
+        src: urlFor(featuredData.heroImage)
+          .width(2560)
+          .format('webp')
+          .quality(95)
+          .url(),
+        alt:
+          featuredData.heroImage.alt ?? 'SAGA — Sangeeth Art Gallery & Atelier',
+      }
+    : null
+
+  const portraitUrl = aboutData?.portrait?.asset
+    ? urlFor(aboutData.portrait).width(800).format('webp').quality(85).url()
+    : null
+
+  const studioImages = aboutData?.studioImages ?? []
+  // Mirror About page: Atelier uses studioImages[1], falling back to studioImages[0]
+  const studioImageSource = studioImages[1]?.asset
+    ? studioImages[1]
+    : (studioImages[0] ?? null)
+  const studioImageUrl = studioImageSource?.asset
+    ? urlFor(studioImageSource).width(2560).format('webp').quality(95).url()
+    : null
 
   return (
     <>
       <h1 className="sr-only">SAGA — Sangeeth Art Gallery &amp; Atelier</h1>
-      <Hero />
+      <Hero image={heroImage} />
       <FeaturedWorks artworks={featuredArtworks} />
-      <AboutTeaser />
-      <StudioTeaser />
+      <AboutTeaser portraitUrl={portraitUrl} />
+      <StudioTeaser imageUrl={studioImageUrl} />
     </>
   )
 }

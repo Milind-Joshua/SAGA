@@ -19,6 +19,8 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    // Sanity studio build output — large compiled files, not source
+    'dist/**',
   ]),
 ])
 

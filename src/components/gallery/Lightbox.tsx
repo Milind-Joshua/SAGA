@@ -25,6 +25,7 @@ export function Lightbox({
   const reducedMotion = useReducedMotion()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const triggerRef = useRef<Element | null>(null)
+  const touchStartX = useRef<number | null>(null)
 
   // Scroll lock + trigger capture — no setState here
   useEffect(() => {
@@ -82,6 +83,23 @@ export function Lightbox({
     return () => window.removeEventListener('keydown', handleKey)
   }, [isOpen, handleClose, handleNext, handlePrev])
 
+  // Touch swipe navigation
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }, [])
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (touchStartX.current === null) return
+      const diff = touchStartX.current - e.changedTouches[0].clientX
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? handleNext() : handlePrev()
+      }
+      touchStartX.current = null
+    },
+    [handleNext, handlePrev]
+  )
+
   // Focus trap
   const handleTabKey = useCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'Tab') return
@@ -130,17 +148,17 @@ export function Lightbox({
           onKeyDown={handleTabKey}
           data-testid="lightbox"
         >
-          {/* Inner panel — stop propagation so clicks inside don't close */}
+          {/* Inner panel — sizes to image, stop propagation so clicks inside don't close */}
           <div
-            className="relative flex max-h-[90vh] max-w-[90vw] flex-col items-center"
+            className="flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close */}
+            {/* Close — fixed top-right of viewport */}
             <button
               ref={closeButtonRef}
               onClick={handleClose}
               aria-label="Close lightbox"
-              className="absolute -top-12 -right-4 p-2 text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+              className="fixed top-4 right-4 z-20 rounded-sm bg-black/50 p-2 text-white/80 transition-colors hover:bg-black/70 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
             >
               <svg
                 width="24"
@@ -155,62 +173,66 @@ export function Lightbox({
               </svg>
             </button>
 
-            {/* Image */}
-            <div className="relative max-h-[80vh] max-w-[80vw]">
+            {/* Image — drives the panel width */}
+            <div
+              className="relative"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <Image
-                src={current.image.src}
+                src={current.image.lightboxSrc}
                 alt={current.image.alt}
                 width={current.image.width}
                 height={current.image.height}
-                className="max-h-[80vh] w-auto object-contain"
-                style={{ maxWidth: '80vw' }}
+                unoptimized
+                className="block h-auto max-h-[85vh] w-auto max-w-[90vw] object-contain"
               />
+
+              {/* Nav — overlaid on image edges */}
+              {artworks.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    aria-label="Previous artwork"
+                    className="absolute top-1/2 left-0 -translate-y-1/2 bg-black/40 p-3 text-white/80 transition-colors hover:bg-black/60 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    aria-label="Next artwork"
+                    className="absolute top-1/2 right-0 -translate-y-1/2 bg-black/40 p-3 text-white/80 transition-colors hover:bg-black/60 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Caption */}
-            <p className="mt-3 text-sm text-white/70">
+            <p className="mt-3 px-4 text-center text-sm text-white/70">
               {current.title} · {current.medium}, {current.year}
             </p>
-
-            {/* Prev / Next */}
-            {artworks.length > 1 && (
-              <>
-                <button
-                  onClick={handlePrev}
-                  aria-label="Previous artwork"
-                  className="absolute top-1/2 left-0 -translate-x-full -translate-y-1/2 p-4 text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white"
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  onClick={handleNext}
-                  aria-label="Next artwork"
-                  className="absolute top-1/2 right-0 translate-x-full -translate-y-1/2 p-4 text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white"
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                  >
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </>
-            )}
 
             {/* Position indicator */}
             {artworks.length > 1 && (

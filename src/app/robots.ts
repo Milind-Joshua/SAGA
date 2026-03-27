@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/SagaStudio',
+      disallow: ['/api'],
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
   }

@@ -54,6 +54,21 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for screen readers',
+        }),
+      ],
+      description: 'Full-bleed background image for the homepage hero section',
+    }),
+    defineField({
       name: 'featuredArtworks',
       title: 'Featured Artworks',
       type: 'array',

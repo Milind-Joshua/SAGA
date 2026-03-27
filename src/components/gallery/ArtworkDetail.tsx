@@ -53,6 +53,7 @@ export function ArtworkDetail({
                   alt={artwork.image.alt}
                   fill
                   priority
+                  quality={92}
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   placeholder={artwork.image.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={artwork.image.blurDataURL}
@@ -60,7 +61,8 @@ export function ArtworkDetail({
                 />
               </div>
               <p className="mt-2 text-right text-xs text-[var(--color-muted)]">
-                Click to enlarge
+                <span className="hidden sm:inline">Click</span>
+                <span className="sm:hidden">Tap</span> to enlarge
               </p>
             </button>
           </div>
@@ -110,7 +112,7 @@ export function ArtworkDetail({
             {artwork.available && (
               <Link
                 href={`/contact?artwork=${artwork.slug}`}
-                className="inline-block border border-[var(--color-foreground)] px-8 py-3 text-center text-sm tracking-widest uppercase transition-all duration-300 hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+                className="block w-full border border-[var(--color-foreground)] px-8 py-3 text-center text-sm tracking-widest uppercase transition-all duration-300 hover:bg-[var(--color-foreground)] hover:text-[var(--color-background)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] sm:inline-block sm:w-auto"
               >
                 Inquire
               </Link>
@@ -127,7 +129,7 @@ export function ArtworkDetail({
             >
               Related Works
             </h2>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {relatedArtworks.map((related) => (
                 <Link
                   key={related.id}
@@ -136,7 +138,7 @@ export function ArtworkDetail({
                 >
                   <div className="relative mb-3 aspect-[3/4] overflow-hidden bg-[var(--color-border)]">
                     <Image
-                      src={related.image.src}
+                      src={related.image.thumbnailSrc}
                       alt={related.image.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"

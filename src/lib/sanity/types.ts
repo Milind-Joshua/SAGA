@@ -58,8 +58,16 @@ export interface SanityExhibition {
   description?: string
 }
 
+// ── About ─────────────────────────────────────────────────────────────────────
+
+export interface SanityAbout {
+  portrait: SanityImageAsset | null
+  studioImages: SanityImageAsset[] | null
+}
+
 // ── Home ──────────────────────────────────────────────────────────────────────
 
 export interface SanityHomeFeatured {
+  heroImage: SanityImageAsset | null
   featuredArtworks: SanityArtwork[] | null
 }

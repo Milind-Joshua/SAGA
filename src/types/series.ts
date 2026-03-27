@@ -4,6 +4,6 @@ export interface Series {
   slug: string
   title: string
   description: string
-  coverImage: ArtworkImage
+  coverImage: ArtworkImage | null
   year: string
 }

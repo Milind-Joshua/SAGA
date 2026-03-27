@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import Link from 'next/link'
 import { Nav } from './Nav'
 import { MobileMenu } from './MobileMenu'
@@ -8,6 +8,7 @@ import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const handleClose = useCallback(() => setMobileMenuOpen(false), [])
 
   return (
     <>
@@ -54,10 +55,7 @@ export function Header() {
         </div>
       </header>
 
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
+      <MobileMenu isOpen={mobileMenuOpen} onClose={handleClose} />
     </>
   )
 }

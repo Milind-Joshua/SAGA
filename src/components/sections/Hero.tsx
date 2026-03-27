@@ -5,16 +5,13 @@ interface HeroProps {
   image?: {
     src: string
     alt: string
-  }
+  } | null
   title?: string
   tagline?: string
 }
 
 export function Hero({
-  image = {
-    src: 'https://picsum.photos/seed/saga-hero/1920/1080',
-    alt: 'A large-format oil painting of a coastal landscape at dusk — rich ochres and deep blues',
-  },
+  image = null,
   title = 'Sangeeth',
   tagline = 'Original works in oil, watercolour, and mixed media',
 }: HeroProps) {
@@ -23,15 +20,22 @@ export function Hero({
       aria-labelledby="hero-title"
       className="relative flex h-[calc(100vh-73px)] min-h-[560px] items-end overflow-hidden"
     >
-      {/* Full-bleed image */}
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
+      {/* Full-bleed image — or dark gradient background when no image is set */}
+      {image ? (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-950"
+        />
+      )}
 
       {/* Dark gradient overlay for text legibility */}
       <div
@@ -43,16 +47,16 @@ export function Hero({
       <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:pb-24">
         <h1
           id="hero-title"
-          className="mb-4 font-serif text-5xl text-white md:text-7xl"
+          className="mb-4 font-serif text-4xl text-white sm:text-5xl md:text-7xl"
         >
           {title}
         </h1>
-        <p className="mb-8 max-w-md text-lg text-white/80 md:text-xl">
+        <p className="mb-8 max-w-md text-base text-white/80 sm:text-lg md:text-xl">
           {tagline}
         </p>
         <Link
           href="/gallery"
-          className="inline-block rounded-none border border-white px-8 py-3 text-sm tracking-widest text-white uppercase transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-white"
+          className="block w-full rounded-none border border-white px-8 py-3 text-center text-sm tracking-widest text-white uppercase transition-all duration-300 hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-white sm:inline-block sm:w-auto"
         >
           View Gallery
         </Link>
