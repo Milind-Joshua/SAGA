@@ -19,6 +19,7 @@ export function StudioTeaser() {
           alt="The SAGA atelier — a bright, north-facing studio with works in progress and shelves of pigments"
           fill
           sizes="100vw"
+          placeholder="empty"
           className="object-cover object-center"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-black/50" />

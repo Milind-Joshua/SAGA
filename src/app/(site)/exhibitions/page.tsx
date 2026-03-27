@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: 'Exhibitions — Sangeeth',
   description:
     'Solo, group, and selected exhibitions by Sangeeth, 2016–present.',
+  alternates: { canonical: '/exhibitions' },
+  openGraph: {
+    title: 'Exhibitions — Sangeeth',
+    description:
+      'Solo, group, and selected exhibitions by Sangeeth, 2016–present.',
+    type: 'website',
+  },
 }
 
 export default async function ExhibitionsPage() {

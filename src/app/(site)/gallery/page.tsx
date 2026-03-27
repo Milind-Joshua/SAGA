@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   title: 'Gallery — Sangeeth',
   description:
     'Browse original paintings and works on paper by Sangeeth — oil, watercolour, and mixed media.',
+  alternates: { canonical: '/gallery' },
+  openGraph: {
+    title: 'Gallery — Sangeeth',
+    description:
+      'Browse original paintings and works on paper by Sangeeth — oil, watercolour, and mixed media.',
+    type: 'website',
+  },
 }
 
 interface GalleryPageProps {

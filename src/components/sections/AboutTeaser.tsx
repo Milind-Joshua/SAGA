@@ -62,6 +62,7 @@ export function AboutTeaser() {
             alt="Sangeeth in her studio, standing before a large canvas"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
+            placeholder="empty"
             className="object-cover"
           />
         </motion.div>

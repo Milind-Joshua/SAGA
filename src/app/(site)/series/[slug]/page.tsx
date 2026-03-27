@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { client } from '@/lib/sanity/client'
 import { seriesBySlugQuery, allSeriesSlugsQuery } from '@/lib/sanity/queries'
 import { mapArtwork, mapSeries } from '@/lib/sanity/mappers'
+import { urlFor } from '@/lib/sanity/image'
 import type { SanitySeriesWithArtworks } from '@/lib/sanity/types'
 import { SeriesHero } from '@/components/sections/SeriesHero'
 import { GalleryGrid } from '@/components/gallery/GalleryGrid'
@@ -28,9 +29,21 @@ export async function generateMetadata({
     { slug }
   )
   if (!doc) return {}
+  const ogImage = urlFor(doc.coverImage)
+    .width(1200)
+    .height(630)
+    .fit('crop')
+    .url()
   return {
     title: `${doc.title} — Sangeeth`,
     description: doc.description,
+    alternates: { canonical: `/series/${slug}` },
+    openGraph: {
+      title: `${doc.title} — Sangeeth`,
+      description: doc.description,
+      type: 'website',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: doc.title }],
+    },
   }
 }
 

@@ -12,6 +12,13 @@ export const metadata: Metadata = {
   title: 'Series — Sangeeth',
   description:
     'Explore thematic series and collections of paintings by Sangeeth.',
+  alternates: { canonical: '/series' },
+  openGraph: {
+    title: 'Series — Sangeeth',
+    description:
+      'Explore thematic series and collections of paintings by Sangeeth.',
+    type: 'website',
+  },
 }
 
 export default async function SeriesIndexPage() {
@@ -43,6 +50,8 @@ export default async function SeriesIndexPage() {
                   alt={s.coverImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  placeholder={s.coverImage.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={s.coverImage.blurDataURL}
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
                 />
                 <div className="absolute top-3 right-3 bg-black/50 px-2 py-1 text-xs text-white/80">

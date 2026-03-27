@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: 'Contact — Sangeeth',
   description:
     'Get in touch with Sangeeth regarding artworks, commissions, or studio visits.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact — Sangeeth',
+    description:
+      'Get in touch with Sangeeth regarding artworks, commissions, or studio visits.',
+    type: 'website',
+  },
 }
 
 export default function ContactPage() {

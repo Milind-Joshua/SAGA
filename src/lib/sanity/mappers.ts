@@ -13,10 +13,11 @@ export function mapArtwork(doc: SanityArtwork): Artwork {
     dimensions: doc.dimensions ?? '',
     description: doc.description,
     image: {
-      src: urlFor(doc.image).width(1200).url(),
+      src: urlFor(doc.image).width(1200).quality(85).url(),
       alt: doc.image.alt ?? doc.title,
       width: 1200,
       height: 1200,
+      blurDataURL: urlFor(doc.image).width(20).blur(50).quality(30).url(),
     },
     series: doc.series?.slug.current,
     seriesTitle: doc.series?.title,
@@ -32,10 +33,11 @@ export function mapSeries(doc: SanitySeries): Series {
     title: doc.title,
     description: doc.description,
     coverImage: {
-      src: urlFor(doc.coverImage).width(1200).url(),
+      src: urlFor(doc.coverImage).width(800).quality(80).url(),
       alt: doc.coverImage.alt ?? doc.title,
-      width: 1200,
-      height: 800,
+      width: 800,
+      height: 600,
+      blurDataURL: urlFor(doc.coverImage).width(20).blur(50).quality(30).url(),
     },
     year: doc.year ?? '',
   }

@@ -3,8 +3,12 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import type { Artwork } from '@/types/artwork'
-import { Lightbox } from './Lightbox'
+
+const Lightbox = dynamic(() => import('./Lightbox').then((m) => m.Lightbox), {
+  ssr: false,
+})
 
 interface ArtworkDetailProps {
   artwork: Artwork
@@ -136,6 +140,8 @@ export function ArtworkDetail({
                       alt={related.image.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
+                      placeholder={related.image.blurDataURL ? 'blur' : 'empty'}
+                      blurDataURL={related.image.blurDataURL}
                       className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
                     />
                   </div>
