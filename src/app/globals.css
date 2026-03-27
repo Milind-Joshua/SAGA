@@ -13,6 +13,16 @@
   --font-sans: var(--font-sans);
 }
 
+/* Smooth dark/light theme transitions on all color-bearing properties.
+   Zero specificity — Tailwind's duration-* classes on hover/focus effects override this. */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+}
+
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
