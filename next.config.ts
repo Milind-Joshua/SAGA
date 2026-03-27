@@ -17,11 +17,12 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // tighten after Phase 4
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
-      "font-src 'self'",
-      "connect-src 'self'",
+      "font-src 'self' https://fonts.gstatic.com",
+      "connect-src 'self' https://*.sanity.io https://*.api.sanity.io wss://*.sanity.io",
+      "frame-src 'self'",
       "frame-ancestors 'none'",
     ].join('; '),
   },
@@ -33,6 +34,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
       },
     ],
   },

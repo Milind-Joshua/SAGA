@@ -1,36 +1,56 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { allArtworks } from '@/data/artworks'
+import { client } from '@/lib/sanity/client'
+import {
+  artworkBySlugQuery,
+  allArtworksQuery,
+  allArtworkSlugsQuery,
+} from '@/lib/sanity/queries'
+import { mapArtwork } from '@/lib/sanity/mappers'
+import type { SanityArtwork } from '@/lib/sanity/types'
 import { ArtworkDetail } from '@/components/gallery/ArtworkDetail'
+
+export const revalidate = 3600
 
 interface ArtworkPageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return allArtworks.map((artwork) => ({ slug: artwork.slug }))
+  const slugs = await client.fetch<string[]>(allArtworkSlugsQuery)
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
   params,
 }: ArtworkPageProps): Promise<Metadata> {
   const { slug } = await params
-  const artwork = allArtworks.find((a) => a.slug === slug)
-  if (!artwork) return {}
+  const doc = await client.fetch<SanityArtwork | null>(artworkBySlugQuery, {
+    slug,
+  })
+  if (!doc) return {}
   return {
-    title: `${artwork.title} — Sangeeth`,
+    title: `${doc.title} — Sangeeth`,
     description:
-      artwork.description ??
-      `${artwork.title}, ${artwork.medium}, ${artwork.dimensions}, ${artwork.year}.`,
+      doc.description ??
+      `${doc.title}, ${doc.medium}${doc.dimensions ? ', ' + doc.dimensions : ''}, ${doc.year}.`,
   }
 }
 
 export default async function ArtworkPage({ params }: ArtworkPageProps) {
   const { slug } = await params
-  const artwork = allArtworks.find((a) => a.slug === slug)
-  if (!artwork) notFound()
 
-  // Related: same series (excl. self), or same medium tag, capped at 3
+  const [doc, allDocs] = await Promise.all([
+    client.fetch<SanityArtwork | null>(artworkBySlugQuery, { slug }),
+    client.fetch<SanityArtwork[]>(allArtworksQuery),
+  ])
+
+  if (!doc) notFound()
+
+  const artwork = mapArtwork(doc)
+  const allArtworks = allDocs.map(mapArtwork)
+
+  // Related: same series (excl. self), or same tags, capped at 3
   const related = allArtworks
     .filter((a) => {
       if (a.id === artwork.id) return false

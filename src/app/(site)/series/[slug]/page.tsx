@@ -1,37 +1,49 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { allSeries } from '@/data/series'
-import { allArtworks } from '@/data/artworks'
+import { client } from '@/lib/sanity/client'
+import { seriesBySlugQuery, allSeriesSlugsQuery } from '@/lib/sanity/queries'
+import { mapArtwork, mapSeries } from '@/lib/sanity/mappers'
+import type { SanitySeriesWithArtworks } from '@/lib/sanity/types'
 import { SeriesHero } from '@/components/sections/SeriesHero'
 import { GalleryGrid } from '@/components/gallery/GalleryGrid'
+
+export const revalidate = 3600
 
 interface SeriesPageProps {
   params: Promise<{ slug: string }>
 }
 
 export async function generateStaticParams() {
-  return allSeries.map((s) => ({ slug: s.slug }))
+  const slugs = await client.fetch<string[]>(allSeriesSlugsQuery)
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({
   params,
 }: SeriesPageProps): Promise<Metadata> {
   const { slug } = await params
-  const series = allSeries.find((s) => s.slug === slug)
-  if (!series) return {}
+  const doc = await client.fetch<SanitySeriesWithArtworks | null>(
+    seriesBySlugQuery,
+    { slug }
+  )
+  if (!doc) return {}
   return {
-    title: `${series.title} — Sangeeth`,
-    description: series.description,
+    title: `${doc.title} — Sangeeth`,
+    description: doc.description,
   }
 }
 
 export default async function SeriesPage({ params }: SeriesPageProps) {
   const { slug } = await params
-  const series = allSeries.find((s) => s.slug === slug)
-  if (!series) notFound()
+  const doc = await client.fetch<SanitySeriesWithArtworks | null>(
+    seriesBySlugQuery,
+    { slug }
+  )
+  if (!doc) notFound()
 
-  const artworks = allArtworks.filter((a) => a.series === slug)
+  const series = mapSeries(doc)
+  const artworks = (doc.artworks ?? []).map(mapArtwork)
 
   return (
     <main id="main-content">

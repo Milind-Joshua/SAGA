@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { allSeries } from '@/data/series'
-import { allArtworks } from '@/data/artworks'
+import { client } from '@/lib/sanity/client'
+import { allSeriesQuery } from '@/lib/sanity/queries'
+import { mapSeries } from '@/lib/sanity/mappers'
+import type { SanitySeries } from '@/lib/sanity/types'
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Series — Sangeeth',
@@ -10,7 +14,10 @@ export const metadata: Metadata = {
     'Explore thematic series and collections of paintings by Sangeeth.',
 }
 
-export default function SeriesIndexPage() {
+export default async function SeriesIndexPage() {
+  const docs = await client.fetch<SanitySeries[]>(allSeriesQuery)
+  const series = docs.map(mapSeries)
+
   return (
     <main id="main-content" className="mx-auto max-w-7xl px-6 py-16">
       <header className="mb-12">
@@ -21,21 +28,19 @@ export default function SeriesIndexPage() {
       </header>
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {allSeries.map((series) => {
-          const count = allArtworks.filter(
-            (a) => a.series === series.slug
-          ).length
+        {series.map((s, i) => {
+          const count = (docs[i] as SanitySeries).artworkCount ?? 0
           return (
             <Link
-              key={series.slug}
-              href={`/series/${series.slug}`}
+              key={s.slug}
+              href={`/series/${s.slug}`}
               className="group block focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
               data-testid="series-card"
             >
               <div className="relative mb-4 aspect-[4/3] overflow-hidden bg-[var(--color-border)]">
                 <Image
-                  src={series.coverImage.src}
-                  alt={series.coverImage.alt}
+                  src={s.coverImage.src}
+                  alt={s.coverImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
@@ -44,8 +49,8 @@ export default function SeriesIndexPage() {
                   {count} {count === 1 ? 'work' : 'works'}
                 </div>
               </div>
-              <h2 className="mb-1 font-serif text-xl">{series.title}</h2>
-              <p className="text-sm text-[var(--color-muted)]">{series.year}</p>
+              <h2 className="mb-1 font-serif text-xl">{s.title}</h2>
+              <p className="text-sm text-[var(--color-muted)]">{s.year}</p>
             </Link>
           )
         })}
