@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Nav } from './Nav'
 import { MobileMenu } from './MobileMenu'
+import { ThemeToggle } from './ThemeToggle'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -19,33 +20,37 @@ export function Header() {
             SAGA
           </Link>
 
-          {/* Desktop nav */}
-          <div className="hidden md:block">
+          {/* Desktop nav + theme toggle */}
+          <div className="hidden items-center gap-4 md:flex">
             <Nav />
+            <ThemeToggle />
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="flex h-11 w-11 items-center justify-center rounded focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] md:hidden"
-            aria-label="Open navigation menu"
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="flex items-center gap-1 md:hidden">
+            <ThemeToggle />
+            <button
+              className="flex h-11 w-11 items-center justify-center rounded focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+              aria-label="Open navigation menu"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileMenuOpen(true)}
             >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                aria-hidden="true"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 

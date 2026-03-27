@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
+import { Providers } from './providers'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -35,8 +36,11 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

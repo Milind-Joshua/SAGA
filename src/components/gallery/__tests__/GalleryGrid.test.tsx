@@ -13,6 +13,9 @@ vi.mock('framer-motion', () => ({
     article: ({ children, ...props }: React.ComponentProps<'article'>) => (
       <article {...props}>{children}</article>
     ),
+    div: ({ children, ...props }: React.ComponentProps<'div'>) => (
+      <div {...props}>{children}</div>
+    ),
   },
   useReducedMotion: () => false,
 }))

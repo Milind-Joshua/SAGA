@@ -6,6 +6,8 @@
     --color-muted: #6b6b6b;
     --color-border: #e5e5e0;
     --color-accent: #8b7355; /* warm bronze — single accent */
+    --color-surface: #f0f0ec;
+    --color-surface-raised: #ffffff;
 
     /* Typography */
     --font-serif: var(--font-cormorant), Georgia, serif;
@@ -20,11 +22,12 @@
     --transition-page: 500ms ease;
   }
 
-  /* Dark mode hook — vars only, not yet activated */
   .dark {
     --color-background: #0f0f0d;
     --color-foreground: #f5f5f3;
     --color-muted: #9b9b9b;
     --color-border: #2a2a26;
+    --color-surface: #1a1a17;
+    --color-surface-raised: #252521;
   }
 }

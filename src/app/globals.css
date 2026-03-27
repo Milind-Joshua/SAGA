@@ -7,6 +7,8 @@
   --color-muted: var(--color-muted);
   --color-border: var(--color-border);
   --color-accent: var(--color-accent);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
