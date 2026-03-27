@@ -1,7 +1,7 @@
 import type { Artwork } from '@/types/artwork'
 
-// All images are public domain paintings sourced from Wikimedia Commons
-const W = 'https://upload.wikimedia.org/wikipedia/commons/thumb'
+// All images are public domain paintings sourced from The Metropolitan Museum of Art Open Access
+const M = 'https://images.metmuseum.org/CRDImages/ep/web-large'
 
 export const allArtworks: Artwork[] = [
   // ── Coastal series ──────────────────────────────────────────────────────────
@@ -15,10 +15,10 @@ export const allArtworks: Artwork[] = [
     description:
       'Warm ochres dissolve into deep indigo where the sea meets a hazy horizon. Painted on a single overcast morning, this work captures the transient quality of Atlantic light before the tide turns.',
     image: {
-      src: `${W}/6/6a/Gustave_Courbet_-_The_Wave_-_WGA5526.jpg/1024px-Gustave_Courbet_-_The_Wave_-_WGA5526.jpg`,
-      alt: 'Gustave Courbet — The Wave, 1870, oil on canvas',
+      src: `${M}/DP169472.jpg`,
+      alt: 'Eugène Isabey — A Storm off the Normandy Coast, 1856, oil on canvas',
       width: 1024,
-      height: 724,
+      height: 768,
     },
     series: 'coastal',
     seriesTitle: 'Coastal Light',
@@ -35,10 +35,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A companion piece to Coastal Light I, painted the following dawn. The palette shifts toward silvery lilac as morning mist lifts from the water, revealing a flat calm beneath.',
     image: {
-      src: `${W}/e/ed/J._M._W._Turner_-_Fishermen_at_Sea_-_Google_Art_Project.jpg/1024px-J._M._W._Turner_-_Fishermen_at_Sea_-_Google_Art_Project.jpg`,
-      alt: 'J.M.W. Turner — Fishermen at Sea, 1796, oil on canvas',
+      src: `${M}/DT1973.jpg`,
+      alt: 'Gustave Courbet — The Calm Sea, 1869, oil on canvas',
       width: 1024,
-      height: 766,
+      height: 724,
     },
     series: 'coastal',
     seriesTitle: 'Coastal Light',
@@ -55,8 +55,8 @@ export const allArtworks: Artwork[] = [
     description:
       'The largest of the Coastal Light series. Broken brushwork and scraping techniques evoke the restless energy of a western shore in autumn — the canvas itself retains the texture of wind.',
     image: {
-      src: `${W}/a/a5/Winslow_Homer_-_Breezing_Up_%28A_Fair_Wind%29_-_Google_Art_Project.jpg/1024px-Winslow_Homer_-_Breezing_Up_%28A_Fair_Wind%29_-_Google_Art_Project.jpg`,
-      alt: 'Winslow Homer — Breezing Up (A Fair Wind), 1876, oil on canvas',
+      src: `${M}/DP-34962-001.jpg`,
+      alt: 'Andreas Achenbach — Sunset after a Storm on the Coast of Sicily, 1853, oil on canvas',
       width: 1024,
       height: 731,
     },
@@ -77,8 +77,8 @@ export const allArtworks: Artwork[] = [
     description:
       'Entering a dense stand of oak in late afternoon, light pools on the forest floor in isolated patches. The painting explores the relationship between darkness and luminosity in enclosed natural spaces.',
     image: {
-      src: `${W}/a/af/Ivan_Shishkin_-_Morning_in_a_Pine_Forest_-_Google_Art_Project.jpg/1024px-Ivan_Shishkin_-_Morning_in_a_Pine_Forest_-_Google_Art_Project.jpg`,
-      alt: 'Ivan Shishkin — Morning in a Pine Forest, 1889, oil on canvas',
+      src: `${M}/DP-31520-001.jpg`,
+      alt: 'Théodore Rousseau — The Forest in Winter at Sunset, ca. 1846–67, oil on canvas',
       width: 1024,
       height: 754,
     },
@@ -97,10 +97,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A winter version of the same woodland — stripped of leaf, the canopy opens and cold blue sky presses through bare branches. The palette is deliberately austere: charcoal, pale ash, a thread of yellow.',
     image: {
-      src: `${W}/b/b9/Caspar_David_Friedrich_-_Der_Chasseur_im_Walde.jpg/830px-Caspar_David_Friedrich_-_Der_Chasseur_im_Walde.jpg`,
-      alt: 'Caspar David Friedrich — Der Chasseur im Walde, 1814, oil on canvas',
-      width: 830,
-      height: 1024,
+      src: `${M}/DP-42549-001.jpg`,
+      alt: 'Vincent van Gogh — Wheat Field with Cypresses, 1889, oil on canvas',
+      width: 1024,
+      height: 815,
     },
     series: 'forest',
     seriesTitle: 'Forest Interiors',
@@ -117,8 +117,8 @@ export const allArtworks: Artwork[] = [
     description:
       'Dappled light filtering through a dense forest canopy, painted with loose expressive brushwork. The horizontal format emphasises the depth of the woodland rather than its height.',
     image: {
-      src: `${W}/3/3c/Ivan_Shishkin_-_The_Rye_-_Google_Art_Project.jpg/1024px-Ivan_Shishkin_-_The_Rye_-_Google_Art_Project.jpg`,
-      alt: 'Ivan Shishkin — The Rye, 1878, oil on canvas',
+      src: `${M}/DP130325.jpg`,
+      alt: 'Alfred Sisley — View of Marly-le-Roi from the Heights of Coeur-Volant, 1876, oil on canvas',
       width: 1024,
       height: 691,
     },
@@ -139,10 +139,10 @@ export const allArtworks: Artwork[] = [
     description:
       'A simple ceramic vessel on a linen cloth, rendered in translucent watercolour washes. The painting is as much about the shadow the object casts as about the object itself.',
     image: {
-      src: `${W}/b/b8/Jean-Baptiste-Sim%C3%A9on_Chardin_-_The_Silver_Goblet_-_WGA4757.jpg/750px-Jean-Baptiste-Sim%C3%A9on_Chardin_-_The_Silver_Goblet_-_WGA4757.jpg`,
-      alt: 'Jean-Baptiste-Siméon Chardin — The Silver Goblet, c.1728, oil on canvas',
-      width: 750,
-      height: 895,
+      src: `${M}/DT47.jpg`,
+      alt: 'Paul Cézanne — Still Life with Apples and Primroses, ca. 1890, oil on canvas',
+      width: 1024,
+      height: 818,
     },
     series: 'still-life',
     seriesTitle: 'Domestic Studies',
@@ -159,8 +159,8 @@ export const allArtworks: Artwork[] = [
     description:
       'Three pears arranged on a stone windowsill. The work is part of a domestic study practice — returning to ordinary objects with fresh eyes, seeking the monumental within the quotidian.',
     image: {
-      src: `${W}/2/2e/Paul_C%C3%A9zanne_-_Apples_and_Oranges_-_Google_Art_Project.jpg/1024px-Paul_C%C3%A9zanne_-_Apples_and_Oranges_-_Google_Art_Project.jpg`,
-      alt: 'Paul Cézanne — Apples and Oranges, c.1899, oil on canvas',
+      src: `${M}/DP-14936-049.jpg`,
+      alt: 'Paul Cézanne — Still Life with Apples and Pears, ca. 1891–92, oil on canvas',
       width: 1024,
       height: 818,
     },
@@ -179,8 +179,8 @@ export const allArtworks: Artwork[] = [
     description:
       'A folded linen cloth occupies almost the entire picture plane. The challenge here is purely tonal — the white of the cloth against the off-white of the paper, differentiated only by shadow and crease.',
     image: {
-      src: `${W}/5/5c/Jean_Baptiste_Simeon_Chardin_-_The_Brioche_-_Google_Art_Project.jpg/1024px-Jean_Baptiste_Simeon_Chardin_-_The_Brioche_-_Google_Art_Project.jpg`,
-      alt: 'Jean-Baptiste-Siméon Chardin — The Brioche, 1763, oil on canvas',
+      src: `${M}/DT1980.jpg`,
+      alt: 'Henri Fantin-Latour — Still Life with Flowers and Fruit, 1866, oil on canvas',
       width: 1024,
       height: 861,
     },
@@ -201,8 +201,8 @@ export const allArtworks: Artwork[] = [
     description:
       'A small-format study painted in a single sitting at first light. The brevity of the painting session is legible in the work — marks are decisive, nothing is overworked.',
     image: {
-      src: `${W}/7/7e/Camille_Corot_-_Souvenir_of_Mortefontaine.jpg/1024px-Camille_Corot_-_Souvenir_of_Mortefontaine.jpg`,
-      alt: 'Camille Corot — Souvenir of Mortefontaine, 1864, oil on canvas',
+      src: `${M}/DT1042.jpg`,
+      alt: 'Camille Pissarro — The Garden of the Tuileries on a Spring Morning, 1899, oil on canvas',
       width: 1024,
       height: 737,
     },
@@ -219,8 +219,8 @@ export const allArtworks: Artwork[] = [
     description:
       'The counterpart to Morning Light — painted at dusk, when colour temperature shifts dramatically and familiar forms become ambiguous. A companion piece intended to hang alongside its pair.',
     image: {
-      src: `${W}/9/9b/Frederic_Edwin_Church_-_Twilight_in_the_Wilderness.jpg/1024px-Frederic_Edwin_Church_-_Twilight_in_the_Wilderness.jpg`,
-      alt: 'Frederic Edwin Church — Twilight in the Wilderness, 1860, oil on canvas',
+      src: `${M}/DT2138.jpg`,
+      alt: 'Théodore Géricault — Evening: Landscape with an Aqueduct, 1818, oil on canvas',
       width: 1024,
       height: 609,
     },
@@ -237,9 +237,9 @@ export const allArtworks: Artwork[] = [
     description:
       'A path through deciduous woodland in October. The painting is structured around the recession of the path itself — a formal device that draws the eye into the picture while the peripheral foliage burns with seasonal colour.',
     image: {
-      src: `${W}/e/ec/John_Everett_Millais_-_Autumn_Leaves.jpg/849px-John_Everett_Millais_-_Autumn_Leaves.jpg`,
-      alt: 'John Everett Millais — Autumn Leaves, 1856, oil on canvas',
-      width: 849,
+      src: `${M}/DT1982.jpg`,
+      alt: 'Jean-François Millet — Autumn Landscape with a Flock of Turkeys, 1872–73, oil on canvas',
+      width: 1024,
       height: 1024,
     },
     available: true,

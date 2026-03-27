@@ -41,7 +41,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'upload.wikimedia.org',
+        hostname: 'images.metmuseum.org',
       },
     ],
   },
