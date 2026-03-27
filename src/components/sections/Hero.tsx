@@ -12,8 +12,8 @@ interface HeroProps {
 
 export function Hero({
   image = {
-    src: 'https://picsum.photos/seed/saga-hero/1920/1080',
-    alt: 'A large-format oil painting of a coastal landscape at dusk — rich ochres and deep blues',
+    src: 'https://images.metmuseum.org/CRDImages/ep/web-large/DP-34962-001.jpg',
+    alt: 'Andreas Achenbach — Sunset after a Storm on the Coast of Sicily, 1853, oil on canvas',
   },
   title = 'Sangeeth',
   tagline = 'Original works in oil, watercolour, and mixed media',
