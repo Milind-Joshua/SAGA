@@ -13,14 +13,32 @@
   --font-sans: var(--font-sans);
 }
 
-/* Smooth dark/light theme transitions on all color-bearing properties.
-   Zero specificity — Tailwind's duration-* classes on hover/focus effects override this. */
-*,
-*::before,
-*::after {
-  transition-property: background-color, border-color, color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 500ms;
+/* Apple-style theme transition via View Transitions API.
+   The browser snapshots the full viewport before/after the theme swap and
+   crossfades between the two images as a single unit — no per-element drift. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 350ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.001ms;
+  }
+}
+
+/* Fallback for browsers without View Transitions (Safari < 18, Firefox < 130).
+   Individual CSS transitions are less perfect but still better than a hard cut. */
+@supports not (view-transition-name: none) {
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 350ms;
+  }
 }
 
 body {

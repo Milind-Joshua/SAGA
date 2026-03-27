@@ -24,9 +24,18 @@ export function ThemeToggle() {
 
   const isDark = resolvedTheme === 'dark'
 
+  function handleToggle() {
+    const next = isDark ? 'light' : 'dark'
+    if (!('startViewTransition' in document)) {
+      setTheme(next)
+      return
+    }
+    document.startViewTransition(() => setTheme(next))
+  }
+
   return (
     <button
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+      onClick={handleToggle}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       className="flex h-9 w-9 items-center justify-center rounded text-[var(--color-muted)] transition-colors duration-300 hover:text-[var(--color-foreground)] focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
     >
