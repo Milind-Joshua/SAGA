@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import type { Artwork } from '@/types/artwork'
 
 interface ArtworkCardProps {
@@ -10,18 +10,12 @@ interface ArtworkCardProps {
   index?: number
 }
 
-export function ArtworkCard({ artwork, index = 0 }: ArtworkCardProps) {
-  const reducedMotion = useReducedMotion()
-
+export function ArtworkCard({ artwork }: ArtworkCardProps) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: reducedMotion ? 0 : 0.5,
-        delay: reducedMotion ? 0 : (index % 6) * 0.08,
-        ease: 'easeOut',
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
       }}
       data-testid="artwork-card"
     >
@@ -37,7 +31,7 @@ export function ArtworkCard({ artwork, index = 0 }: ArtworkCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             placeholder={artwork.image.blurDataURL ? 'blur' : 'empty'}
             blurDataURL={artwork.image.blurDataURL}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none"
+            className="object-cover transition-transform duration-500 will-change-transform group-hover:scale-[1.02] motion-reduce:transition-none"
           />
           {/* Availability badge */}
           <div
@@ -51,7 +45,7 @@ export function ArtworkCard({ artwork, index = 0 }: ArtworkCardProps) {
           </div>
           {/* Hover overlay */}
           <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:opacity-100">
-            <div className="translate-y-2 transition-transform duration-300 group-hover:translate-y-0 motion-reduce:translate-y-0">
+            <div className="translate-y-2 transition-transform duration-300 will-change-transform group-hover:translate-y-0 motion-reduce:translate-y-0">
               <p className="text-sm text-white/80">{artwork.medium}</p>
             </div>
           </div>

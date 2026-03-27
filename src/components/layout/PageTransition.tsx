@@ -22,8 +22,8 @@ export function PageTransition({ children }: PageTransitionProps) {
       animate="enter"
       exit="exit"
       transition={{
-        duration: reducedMotion ? 0 : 0.4,
-        ease: 'easeInOut',
+        duration: reducedMotion ? 0 : 0.2,
+        ease: 'easeOut',
       }}
     >
       {children}
