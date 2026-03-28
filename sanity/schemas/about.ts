@@ -74,6 +74,22 @@ export default defineType({
       description: 'Up to 3 studio/atelier images',
     }),
     defineField({
+      name: 'atelierImage',
+      title: 'Atelier Section Image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          validation: (rule) => rule.required(),
+        }),
+      ],
+      description:
+        'Full-width background image for the Atelier section on the About page',
+    }),
+    defineField({
       name: 'techniques',
       title: 'Techniques',
       type: 'array',
