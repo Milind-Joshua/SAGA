@@ -30,5 +30,6 @@
     --color-border: #2a2a26;
     --color-surface: #1a1a17;
     --color-surface-raised: #252521;
+    --color-accent: #a08560; /* lighter bronze: ~5.6:1 contrast on dark bg */
   }
 }

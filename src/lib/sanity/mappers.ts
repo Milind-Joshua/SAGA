@@ -24,7 +24,7 @@ export function mapArtwork(doc: SanityArtwork): Artwork {
         .format('webp')
         .quality(95)
         .url(),
-      alt: doc.image.alt ?? doc.title,
+      alt: doc.image.alt?.trim() || doc.title,
       width: 2400,
       height: 2400,
       blurDataURL: urlFor(doc.image).width(20).blur(50).quality(30).url(),

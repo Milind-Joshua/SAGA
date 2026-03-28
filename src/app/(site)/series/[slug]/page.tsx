@@ -59,7 +59,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
   const artworks = (doc.artworks ?? []).map(mapArtwork)
 
   return (
-    <main id="main-content">
+    <>
       <SeriesHero series={series} artworkCount={artworks.length} />
 
       <div className="mx-auto max-w-7xl px-6 py-16">
@@ -77,6 +77,6 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
 
         <GalleryGrid artworks={artworks} />
       </div>
-    </main>
+    </>
   )
 }

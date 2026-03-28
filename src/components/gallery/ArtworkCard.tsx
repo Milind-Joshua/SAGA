@@ -51,7 +51,7 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
           </div>
         </div>
         <div>
-          <h3 className="font-serif text-lg leading-tight">{artwork.title}</h3>
+          <h2 className="font-serif text-lg leading-tight">{artwork.title}</h2>
           <p className="mt-1 text-sm text-[var(--color-muted)]">
             {artwork.year} · {artwork.dimensions}
           </p>

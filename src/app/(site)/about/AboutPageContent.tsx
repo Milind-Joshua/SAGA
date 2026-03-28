@@ -29,7 +29,7 @@ export function AboutPageContent({
   })
 
   return (
-    <main id="main-content">
+    <>
       {/* Hero */}
       <section
         aria-labelledby="about-hero-title"
@@ -267,6 +267,6 @@ export function AboutPageContent({
           </div>
         </div>
       </section>
-    </main>
+    </>
   )
 }

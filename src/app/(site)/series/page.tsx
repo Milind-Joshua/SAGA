@@ -26,7 +26,7 @@ export default async function SeriesIndexPage() {
   const series = docs.map(mapSeries)
 
   return (
-    <main id="main-content" className="mx-auto max-w-7xl px-6 py-16">
+    <div className="mx-auto max-w-7xl px-6 py-16">
       <header className="mb-12">
         <h1 className="mb-3 font-serif text-4xl md:text-5xl">Series</h1>
         <p className="text-[var(--color-muted)]">
@@ -66,6 +66,6 @@ export default async function SeriesIndexPage() {
           )
         })}
       </div>
-    </main>
+    </div>
   )
 }

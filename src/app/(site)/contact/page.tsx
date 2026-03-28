@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="py-[var(--spacing-section)]">
+    <div className="py-[var(--spacing-section)]">
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <header className="mb-16 border-b border-[var(--color-border)] pb-10">
@@ -119,6 +119,6 @@ export default function ContactPage() {
           </aside>
         </div>
       </div>
-    </main>
+    </div>
   )
 }
