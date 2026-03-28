@@ -42,7 +42,7 @@ export const allExhibitionsQuery = groq`*[_type == "exhibition"] | order(startDa
 /** About page singleton content */
 export const aboutQuery = groq`*[_type == "about"][0] {
   artistName, tagline, bio, statement, pullQuote,
-  portrait, studioImages, techniques
+  portrait, studioImages, atelierImage, techniques
 }`
 
 // ── Home Page ────────────────────────────────────────────────────────────────

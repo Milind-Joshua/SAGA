@@ -22,15 +22,9 @@ export default async function AboutPage() {
     ? urlFor(about.portrait).width(800).format('webp').quality(85).url()
     : null
 
-  const studioImageUrl = about?.studioImages?.[1]?.asset
-    ? urlFor(about.studioImages[1]).width(2560).format('webp').quality(95).url()
-    : about?.studioImages?.[0]?.asset
-      ? urlFor(about.studioImages[0])
-          .width(2560)
-          .format('webp')
-          .quality(95)
-          .url()
-      : null
+  const studioImageUrl = about?.atelierImage?.asset
+    ? urlFor(about.atelierImage).width(2560).format('webp').quality(95).url()
+    : null
 
   return (
     <AboutPageContent
