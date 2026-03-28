@@ -25,7 +25,7 @@ const securityHeaders = [
       // unsafe-inline required for Tailwind CSS utility classes.
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https:",
-      "font-src 'self'",
+      "font-src 'self' data:",
       // Public site fetches Sanity data over HTTPS only — no WebSocket needed.
       "connect-src 'self' https://*.sanity.io https://*.api.sanity.io",
       // Studio is now hosted at saga.sanity.studio — no local iframe needed.
@@ -36,13 +36,6 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
-  experimental: {
-    // Hash-based script integrity — allows static/ISR pages while removing unsafe-inline
-    // from script execution. Generates integrity= attributes at build time.
-    sri: {
-      algorithm: 'sha256',
-    },
-  },
   images: {
     remotePatterns: [
       {
