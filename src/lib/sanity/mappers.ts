@@ -13,11 +13,11 @@ export function mapArtwork(doc: SanityArtwork): Artwork {
     dimensions: doc.dimensions ?? '',
     description: doc.description,
     image: {
-      src: urlFor(doc.image).width(2400).format('webp').quality(92).url(),
+      src: urlFor(doc.image).width(800).format('webp').quality(75).url(),
       thumbnailSrc: urlFor(doc.image)
-        .width(1080)
+        .width(800)
         .format('webp')
-        .quality(94)
+        .quality(75)
         .url(),
       lightboxSrc: urlFor(doc.image)
         .width(3840)

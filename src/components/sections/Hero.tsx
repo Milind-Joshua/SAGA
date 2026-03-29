@@ -5,6 +5,7 @@ interface HeroProps {
   image?: {
     src: string
     alt: string
+    blurDataURL?: string
   } | null
   title?: string
   tagline?: string
@@ -28,6 +29,8 @@ export function Hero({
           fill
           priority
           sizes="100vw"
+          placeholder={image.blurDataURL ? 'blur' : 'empty'}
+          blurDataURL={image.blurDataURL}
           className="object-cover object-center"
         />
       ) : (

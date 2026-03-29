@@ -45,12 +45,17 @@ export default async function HomePage() {
   const heroImage = featuredData?.heroImage?.asset
     ? {
         src: urlFor(featuredData.heroImage)
-          .width(2560)
+          .width(1920)
           .format('webp')
-          .quality(95)
+          .quality(80)
           .url(),
         alt:
           featuredData.heroImage.alt ?? 'SAGA — Sangeeth Art Gallery & Atelier',
+        blurDataURL: urlFor(featuredData.heroImage)
+          .width(20)
+          .blur(50)
+          .quality(30)
+          .url(),
       }
     : null
 

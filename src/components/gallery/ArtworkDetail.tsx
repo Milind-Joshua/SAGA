@@ -53,7 +53,7 @@ export function ArtworkDetail({
                   alt={artwork.image.alt}
                   fill
                   priority
-                  quality={92}
+                  quality={85}
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   placeholder={artwork.image.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={artwork.image.blurDataURL}

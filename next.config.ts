@@ -37,6 +37,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
+    qualities: [30, 75, 80, 85, 95],
     remotePatterns: [
       {
         protocol: 'https',
