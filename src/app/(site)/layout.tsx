@@ -1,5 +1,6 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { PageTransition } from '@/components/PageTransition'
 
 export default function SiteLayout({
   children,
@@ -16,7 +17,7 @@ export default function SiteLayout({
       </a>
       <Header />
       <main id="main-content" className="flex-1 pt-[73px]">
-        {children}
+        <PageTransition>{children}</PageTransition>
       </main>
       <Footer />
     </>
