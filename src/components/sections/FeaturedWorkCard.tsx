@@ -38,8 +38,12 @@ export function FeaturedWorkCard({ artwork, index }: FeaturedWorkCardProps) {
             blurDataURL={artwork.image.blurDataURL}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
           />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/20 motion-reduce:transition-none"
+          />
         </div>
-        <div>
+        <div className="transition-transform duration-500 group-hover:-translate-y-1 motion-reduce:transition-none">
           <h3 className="font-serif text-lg">{artwork.title}</h3>
           <p className="text-sm text-[var(--color-muted)]">
             {artwork.medium}, {artwork.year}

@@ -5,13 +5,13 @@
     --color-foreground: #1a1a1a;
     --color-muted: #6b6b6b;
     --color-border: #e5e5e0;
-    --color-accent: #8b7355; /* warm bronze — single accent */
+    --color-accent: #c8a96e; /* warm gold — single accent */
     --color-surface: #f0f0ec;
     --color-surface-raised: #ffffff;
 
     /* Typography */
     --font-serif: var(--font-cormorant), Georgia, serif;
-    --font-sans: var(--font-inter), system-ui, sans-serif;
+    --font-sans: var(--font-dm-sans), system-ui, sans-serif;
 
     /* Spacing scale */
     --spacing-section: 6rem;
@@ -24,12 +24,12 @@
   }
 
   .dark {
-    --color-background: #0f0f0d;
-    --color-foreground: #f5f5f3;
-    --color-muted: #9b9b9b;
-    --color-border: #2a2a26;
+    --color-background: #0d0d0b;
+    --color-foreground: #f0ede8;
+    --color-muted: #9b9b8e;
+    --color-border: #2a2a24;
     --color-surface: #1a1a17;
     --color-surface-raised: #252521;
-    --color-accent: #a08560; /* lighter bronze: ~5.6:1 contrast on dark bg */
+    --color-accent: #c8a96e; /* warm gold: ~5.2:1 contrast on dark bg */
   }
 }

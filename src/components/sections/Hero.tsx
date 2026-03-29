@@ -46,6 +46,20 @@ export function Hero({
         className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
       />
 
+      {/* Linen/canvas texture layer */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23l)'/%3E%3C/svg%3E\")",
+          backgroundRepeat: 'repeat',
+          backgroundSize: '200px 200px',
+          mixBlendMode: 'multiply',
+          opacity: 0.08,
+        }}
+      />
+
       {/* Content */}
       <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:pb-24">
         <h1
