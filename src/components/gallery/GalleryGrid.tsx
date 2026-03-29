@@ -1,6 +1,5 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
 import type { Artwork } from '@/types/artwork'
 import { ArtworkCard } from './ArtworkCard'
 
@@ -29,21 +28,7 @@ export function GalleryGridSkeleton() {
   )
 }
 
-const gridVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
-  },
-}
-
-const gridVariantsReduced = {
-  hidden: {},
-  visible: {},
-}
-
 export function GalleryGrid({ artworks, onClearFilters }: GalleryGridProps) {
-  const reducedMotion = useReducedMotion()
-
   if (artworks.length === 0) {
     return (
       <div
@@ -66,17 +51,13 @@ export function GalleryGrid({ artworks, onClearFilters }: GalleryGridProps) {
   }
 
   return (
-    <motion.div
+    <div
       className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
       data-testid="gallery-grid"
-      variants={reducedMotion ? gridVariantsReduced : gridVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
     >
       {artworks.map((artwork) => (
         <ArtworkCard key={artwork.id} artwork={artwork} />
       ))}
-    </motion.div>
+    </div>
   )
 }

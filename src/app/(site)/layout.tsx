@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { PageTransition } from '@/components/PageTransition'
+import { SmoothScroll } from '@/components/SmoothScroll'
 
 export default function SiteLayout({
   children,
@@ -15,11 +16,13 @@ export default function SiteLayout({
       >
         Skip to content
       </a>
-      <Header />
-      <main id="main-content" className="flex-1 pt-[73px]">
-        <PageTransition>{children}</PageTransition>
-      </main>
-      <Footer />
+      <SmoothScroll>
+        <Header />
+        <main id="main-content" className="flex-1 pt-[73px]">
+          <PageTransition>{children}</PageTransition>
+        </main>
+        <Footer />
+      </SmoothScroll>
     </>
   )
 }
